@@ -1,0 +1,228 @@
+body {
+    margin: 0;
+    background-size: cover;         
+    background-position: center;     
+    background-attachment: fixed;    
+    background-repeat: no-repeat;
+    background-image: url(Login-Pic.jpg);
+    background-blend-mode: lighten;
+    background-color: rgba(255, 255, 255, 0.3); 
+    height: 150px;
+    font-family: "Poppins", Arial, sans-serif;
+}
+nav ul {
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+    justify-content: right;
+    margin-right: 100px;
+    margin-top: -100px;
+    margin-left: 1110px;
+}
+li a {
+    margin: 10px;
+    color: black;
+    font-size: 15px;
+    position: relative;
+    top: 20px;
+}
+h1 {
+    margin-left: 70px;
+    padding: 3px;
+    line-height: 0cm;
+    font-weight: lighter;
+    font-size: 30px;
+    position: relative;
+    top: -30px;
+}
+.EX {
+    margin-left: 100px;
+}
+header {
+    background-color: grey;
+    padding: 30px;
+    border: 2px solid black;
+    z-index: 10;
+}
+li a:hover {
+    color: white;
+}
+h3 {
+    font-family: "Playfair Display";
+    position: relative;
+    top: 450px;
+    margin-left: -20px;
+}
+ul {
+    list-style: none;
+    text-decoration: none;
+}
+@media (max-width: 480px) {
+  .login-box {
+    width: 90%;
+    padding: 25px;
+  }
+}
+.google-btn {
+  width: 50%;
+  background: white;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  transition: 0.3s;
+  margin-left: 100px;
+  margin-bottom: 0px;
+}
+.google-btn img {
+  width: 20px;
+}
+.google-btn:hover {
+  background-color: black;
+  color: white;
+}
+.login-btn {
+  width: 30%;
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  border: 1px solid black;
+  text-decoration: none;
+  display: inline-block;
+}
+.login-btn:hover {
+  background: white;
+  color: black;
+}
+
+.create-link {
+  margin: 5px 0;
+}
+.create-link a {
+  text-decoration: none;
+  color: #000;
+  font-weight: lighter;
+  font-size: 10px;
+}
+.create-link a:hover {
+  color: #ffb400;
+}
+.login-container {
+  width: 400px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  padding: 40px;
+  margin-left: 528px;
+  margin-right: 550px;
+  margin-top: 100px;
+  justify-content: center;
+  text-align: center;
+}
+.login-container h2 {
+  font-size: 28px;
+  font-family: "Courier New", monospace;
+  margin-bottom: 25px;
+}
+/* Inputs */
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px -10px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 15px;
+  outline: none;
+
+}
+/* Remember + Forgot */
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px;
+  margin: 10px 0 20px;
+}
+.options a {
+  color: #000;
+  text-decoration: none;
+}
+.options a:hover {
+  text-decoration: underline;
+}
+.login-box {
+    border: 2px solid black;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 550px;
+    margin-right: 550px;
+    margin-top: 100px;
+}
+.footer-section.Help a {
+  display: block;          
+  color: rgb(255, 255, 255);            
+  text-decoration: none;   
+  margin: 5px 0;           
+  font-size: 13px;         
+  cursor: pointer;         
+  transition: color 0.3s;
+  line-height: 1.5;
+}
+
+.footer-section.Help a:hover {
+  color: #f7b733;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #111;
+  color: white;
+  padding: 40px 60px;
+  font-family: "Poppins", sans-serif;
+  flex-wrap: wrap;
+  position: relative;
+  top: 100px;
+}
+.footer-section {
+  width: 30%;
+}
+
+.footer-section h3 {
+  color: #f7b733;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+  margin-left: 10px;
+}
+
+.footer-section p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section a:hover {
+  color: #f7b733;
+}
