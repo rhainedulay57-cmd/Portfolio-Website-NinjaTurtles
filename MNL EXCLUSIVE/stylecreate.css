@@ -173,9 +173,8 @@ ul {
   font-family: "Poppins", sans-serif;
   flex-wrap: wrap;
   position: relative;
-  top: 100px;
+  top: 120px;
 }
-
 .footer-section {
   width: 30%;
 }
@@ -190,22 +189,21 @@ ul {
 
 .footer-section p {
   font-size: 13px;
-  line-height: 1.5;
   color: #ccc;
-}
+  line-height: 1.5;
 
+}
 .footer-section a {
   color: #ccc;
   text-decoration: none;
   transition: color 0.3s;
 }
-
 .footer-section a:hover {
   color: #f7b733;
 }
 .footer-section.Help a {
   display: block;          
-  color: rgb(255, 255, 255);            
+  color: #ccc;            
   text-decoration: none;   
   margin: 5px 0;           
   font-size: 13px;         
@@ -213,6 +211,18 @@ ul {
   transition: color 0.3s;
   line-height: 1.5;
 }
+.footer-section.Help {
+  width: 100px;
+  position: relative;
+  left: 80px;
+}
 .footer-section.Help a:hover {
   color: #f7b733;
+}
+.footer-section.Follow p {
+  width: 140px;
+}
+.footer-section.Follow {
+  position: relative;
+  left: 180px;
 }
