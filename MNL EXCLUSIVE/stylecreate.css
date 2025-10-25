@@ -24,24 +24,41 @@ li a {
     position: relative;
     top: 20px;
     text-decoration: none;
+    transition: 300ms ease;
+}
+li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: black;
+  left: 0;
+  bottom: -6px;
+  transition: 300ms ease;
+}
+li a:hover::after {
+  width: 100%;
 }
 h1 {
-    margin-left: 70px;
+    margin-left: 40px;
     padding: 3px;
     line-height: 0cm;
     font-weight: lighter;
     font-size: 30px;
     position: relative;
-    top: 0px;
+    top: -30px;
 }
 .EX {
-    margin-left: 100px;
+    margin-left: 70px;
 }
 header {
     background-color: grey;
-    padding-bottom: 60px;
+    padding: 30px;
     border: 2px solid black;
+    width: 100%;
     z-index: 10;
+    position: fixed;
+    top: 0;
 }
 li a:hover {
     color: white;
@@ -54,11 +71,6 @@ h3 {
 }
 ul {
     list-style: none;
-    text-decoration: none;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    top: 30px;
 }
 @media (max-width: 480px) {
   .login-box {
