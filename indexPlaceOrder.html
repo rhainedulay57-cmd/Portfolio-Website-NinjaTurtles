@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNL Exclusives | Place Order</title>
+  
+
+  <link rel="stylesheet" href="stylePlaceOrder.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>MNL <span>EXCLUSIVES</span></h1>
+    </div>
+    <div class="header-right">
+      <i class="icon"><img src="images/z (1).png" width="20px" /></i>
+      <i class="icon"><img src="images/z (2).png" width="20px" /></i>
+      <i class="icon"><img src="images/z (3).png" width="20px" /></i>
+    </div>
+  </header>
+
+  <main class="placeorder-layout">
+    <div class="breadcrumb">Cart > <b>Place Order</b> > Pay > Order Complete</div>
+
+    <!-- LEFT: SHIPPING FORM -->
+    <section class="form-section">
+      <h2>Shipping Information</h2>
+      <form id="shippingForm">
+        <label>Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter full name" required />
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="09XXXXXXXXX" required />
+
+        <label>Address</label>
+        <textarea id="address" placeholder="Street, Barangay, City" required></textarea>
+
+        <label>Postal Code</label>
+        <input type="text" id="postal" placeholder="e.g. 1001" required />
+
+        <button type="submit" class="continue-btn">Continue to Payment</button>
+      </form>
+    </section>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <aside class="summary-panel">
+      <h2>Order Summary</h2>
+      <div class="summary-item">
+        <p>Subtotal</p>
+        <span id="subtotal">₱0.00</span>
+      </div>
+      <div class="summary-item">
+        <p>Shipping Fee</p>
+        <span id="shipping">₱99.00</span>
+      </div>
+      <div class="summary-total">
+        <p>Total</p>
+        <span id="total">₱0.00</span>
+      </div>
+      <button class="back-btn">← Back to Cart</button>
+    </aside>
+  </main>
+
+  <script src="indexPlaceOrder.js"></script>
+  
+</body>
+</html>

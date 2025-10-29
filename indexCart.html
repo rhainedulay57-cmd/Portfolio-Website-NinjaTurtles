@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MNL Exclusives | Cart</title>
+  <link rel="stylesheet" href="styleCart.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>MNL <span>EXCLUSIVES</span></h1>
+    </div>
+    <div class="header-right">
+      <i id="CART"></i>
+      
+
+
+    </div>
+  </header>
+
+  <main class="cart-layout">
+    <!-- CART ITEMS -->
+    <section class="cart-section">
+      <div class="breadcrumb"><b>Cart </b>> Place Order > Pay > Order Complete</div>
+
+      <div class="cart-item">
+        <input type="checkbox" class="select-item" />
+        <img src="/" alt="Jersey" />
+        <div class="item-info">
+          <h3>Manila Exclusive Jersey | Large</h3>
+          <p>BLACK</p>
+        </div>
+        <div class="item-price">₱599.99</div>
+        <div class="quantity">
+          <button class="qty-btn decrease">−</button>
+          <span class="qty">1</span>
+          <button class="qty-btn increase">+</button>
+        </div>
+      </div>
+
+      <div class="cart-item selected">
+        <input type="checkbox" class="select-item" checked />
+        <img src="/" alt="V2 Shirt" />
+        <div class="item-info">
+          <h3>Manila Exclusive V2 T-Shirt | Large</h3>
+          <p>WHITE & BLACK</p>
+        </div>
+        <div class="item-price">₱499.99</div>
+        <div class="quantity">
+          <button class="qty-btn decrease">−</button>
+          <span class="qty">2</span>
+          <button class="qty-btn increase">+</button>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <input type="checkbox" class="select-item" />
+        <img src="/" alt="V3 Shirt" />
+        <div class="item-info">
+          <h3>Sweat pants | Large</h3>
+          <p>Light gray</p>
+        </div>
+        <div class="item-price">₱689.99</div>
+        <div class="quantity">
+          <button class="qty-btn decrease">−</button>
+          <span class="qty">1</span>
+          <button class="qty-btn increase">+</button>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <input type="checkbox" class="select-item" />
+        <img src="/" alt="Quote Shirt" />
+        <div class="item-info">
+          <h3>Manila Exclusive "I ❤️ WHEN I REMEMBER WHO THE F*CK I AM"</h3>
+          <p>WHITE</p>
+        </div>
+        <div class="item-price">₱599.99</div>
+        <div class="quantity">
+          <button class="qty-btn decrease">−</button>
+          <span class="qty">1</span>
+          <button class="qty-btn increase">+</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY PANEL -->
+    <aside class="summary-panel">
+      <h2>Order summary</h2>
+      <div class="summary-item">
+        <p>Subtotal (<span id="itemCount">0</span> items)</p>
+        <span id="subtotal">₱0.00</span>
+      </div>
+      <div class="summary-item">
+        <p>Shipping Fee</p>
+        <span id="shipping">₱99.00</span>
+      </div>
+
+      <div class="voucher">
+        <input type="text" id="voucher" placeholder="Enter Voucher Code" />
+        <button id="apply">APPLY</button>
+      </div>
+
+      <div class="summary-total">
+        <p>Total</p>
+        <span id="total">₱0.00</span>
+      </div>
+
+      <button id="checkoutBtn">PROCEED TO CHECKOUT</button>
+    </aside>
+  </main>
+
+  <script src="indexCart.js"></script>
+<script src="scriptCart.js"></script>
+
+  
+</body>
+</html>
+
+
+
