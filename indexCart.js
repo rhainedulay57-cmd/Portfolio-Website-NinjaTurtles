@@ -177,6 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
       window.location.href = "indexPlaceOrder.html";
+    });
+  }
       // get numeric total
       const totalText = (totalEl && totalEl.textContent) ? totalEl.textContent : null;
       const totalNum = totalText ? parsePrice(totalText) : 0;
@@ -186,8 +188,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       alert(`Checkout OK — Total: ₱${totalNum.toFixed(2)}`);
     });
-  }
 
   // Initialize
   calculateTotals();
-});

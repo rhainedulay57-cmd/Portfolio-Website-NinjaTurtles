@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 body {
@@ -163,7 +162,7 @@ header h1 span {
   background-color: #fff;
   border: 1px solid #bdbdbd;
   padding: 18px 20px;
-  border-radius: 3px;
+  border-radius: 5px;
   align-self: flex-start;
   margin-top: 25px;
 }
@@ -220,9 +219,10 @@ header h1 span {
   padding-top: 12px;
   font-size: 14px;
   font-weight: bold;
+  margin-bottom: 30px;
 }
 
-.checkoutBtn {
+#checkoutBtn {
   background-color: #ffb100;
   color: #000;
   font-weight: bold;
@@ -230,13 +230,16 @@ header h1 span {
   width: 100%;
   padding: 10px;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   margin-top: 15px;
   cursor: pointer;
   transition: background 0.2s;
+  text-decoration: none;
+  position: relative;
+  right: -100px;
 }
 
-.checkoutBtn:hover {
+#checkoutBtn:hover {
   background-color: #ffa000;
 }
 

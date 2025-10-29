@@ -1,0 +1,246 @@
+body {
+    margin: 0;
+    background-size: cover;         
+    background-position: center;        
+    background-repeat: no-repeat;
+    background-attachment: fixed ;
+    background-blend-mode: lighten;
+}
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  scroll-padding-top: 60px;
+}
+/* TOP BAR NAV */
+nav ul {
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+    justify-content: right;
+    margin-right: 100px;
+    margin-top: -100px;
+    margin-left: 1110px;
+}
+li a {
+    margin: 10px;
+    color: black;
+    font-size: 15px;
+    position: relative;
+    top: 20px;
+    text-decoration: none;
+    transition: 300ms ease;
+}
+li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: black;
+  left: 0;
+  bottom: -6px;
+  transition: 300ms ease;
+}
+li a:hover::after {
+  width: 100%;
+}
+h1 {
+    margin-left: 40px;
+    padding: 3px;
+    line-height: 0cm;
+    font-weight: lighter;
+    font-size: 30px;
+    position: relative;
+    top: -30px;
+}
+.EX {
+    margin-left: 70px;
+}
+header {
+    background-color: grey;
+    padding: 30px;
+    border: 2px solid black;
+    width: 100%;
+    z-index: 10;
+    position: fixed;
+}
+li a:hover {
+    color: white;
+}
+h3 {
+    font-family: "Playfair Display";
+    position: relative;
+    top: 450px;
+    margin-left: -20px;
+}
+ul {
+    list-style: none;
+}
+/* NAV TOP V2 */
+.nav-links a {
+    margin: 0 30px;
+    margin-top: -100px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.501);
+    font-weight: bold;
+    position: relative;
+}
+.nav-links {
+    margin-top: 60px;
+    align-items: center;   
+    text-align: center;
+    justify-content: center; 
+    display: flex;
+    position: relative;
+}
+.nav-links a:hover {
+    text-decoration: underline;
+    color: white;
+}
+/* HOME PAGE MAIN */
+.home-text {
+  width: 700px;
+  font-size: 20px;
+  font-weight: lighter;
+  margin-left: 30px;
+  line-height: 1cm;
+  position: relative;
+  top: 500px;
+  margin-top: -20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+.home-text p {
+  color: white;
+}
+#home {
+  background: url(HOMEPAGE-PICTURE.jpg) no-repeat center center/cover;
+  min-height: 120vh;
+  width: 100%;
+  overflow: hidden;
+}
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 120vh;
+  background-color: rgba(128, 128, 128, 0.362);
+  z-index: 1;
+}
+#home * {
+  position: relative;
+  z-index: 2;
+}
+#about {
+  min-height: 100vh;
+  width: 100%;
+  background: url(about-us-bg.jpg) no-repeat center center/cover;
+  overflow: hidden;
+}
+#about::before {
+  content: "";
+  position: absolute;
+  top: 200;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(128, 128, 128, 0.362);
+  z-index: 1;
+}
+#about * {
+  position: relative;
+  z-index: 2;
+}
+.about-text {
+  color: white;
+  width: 1000px;
+  margin: 100px;
+  line-height: 1cm;
+  text-align: center;
+  margin-left: 260px;
+}
+#about p {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  font-family: "Verdana";
+  border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
+  z-index: 1;
+}
+#about h2 {
+  font-size: 60px;
+}
+#about h4 {
+  font-size: 20px;
+  color: #f7b733;
+  margin-left: 5px;
+  position: relative;
+  bottom: 20px;
+}
+/* FOOTER TERMS */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: #111;
+  color: white;
+  padding: 40px 60px;
+  font-family: "Poppins", sans-serif;
+  flex-wrap: wrap;
+  position: relative;
+  top: 0px;
+}
+.footer-section {
+  width: 30%;
+}
+
+.footer-section h3 {
+  color: #f7b733;
+  margin-bottom: 10px;
+  position: relative;
+  top: 0px;
+  margin-left: 10px;
+}
+
+.footer-section p {
+  font-size: 13px;
+  color: #ccc;
+  line-height: 1.5;
+
+}
+.footer-section a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-section a:hover {
+  color: #f7b733;
+}
+.footer-section.Help a {
+  display: block;          
+  color: #ccc;            
+  text-decoration: none;   
+  margin: 5px 0;           
+  font-size: 13px;         
+  cursor: pointer;         
+  transition: color 0.3s;
+  line-height: 1.5;
+}
+.footer-section.Help {
+  width: 100px;
+  position: relative;
+  left: 80px;
+}
+.footer-section.Help a:hover {
+  color: #f7b733;
+}
+.footer-section.Follow p {
+  width: 140px;
+}
+.footer-section.Follow {
+  position: relative;
+  left: 180px;
+}
