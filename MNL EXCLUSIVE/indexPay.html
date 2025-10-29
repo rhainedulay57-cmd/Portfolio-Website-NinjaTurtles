@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="stylePay.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <title>MNL Exclusives | Payment</title>
+
+</head>
+<body>
+  <header>
+  <h1>MNL</h1>
+    <h1 class="EX">EXCLUSIVE</h1>
+
+  <nav>
+    <ul>
+        <li><a href="Home Page.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="indexCart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        <li><a href="Login Page.html"><i class="fa-regular fa-circle-user"></i></a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <main class="payment-layout">
+    <div class="breadcrumb">Cart > Place Order > <b>Pay</b> > Order Complete</div>
+
+    <section class="payment-section">
+      <h2>Payment Method</h2>
+      <form id="paymentForm">
+        <label><input type="radio" name="payment" value="cod" checked /> Cash on Delivery</label>
+        <label><input type="radio" name="payment" value="gcash" /> GCash</label>
+        <label><input type="radio" name="payment" value="card" /> Credit/Debit Card</label>
+
+        <div class="payment-details" id="gcashDetails" style="display: none;">
+          <p>Send payment to: <b>0999-123-4567</b></p>
+          <p>Account Name: <b>MNL Exclusives</b></p>
+        </div>
+
+        <div class="payment-details" id="cardDetails" style="display: none;">
+          <label>Card Number</label>
+          <input type="text" id="cardNumber" placeholder="XXXX-XXXX-XXXX-XXXX" />
+          <label>Expiry Date</label>
+          <input type="text" id="expiry" placeholder="MM/YY" />
+          <label>CVV</label>
+          <input type="text" id="cvv" placeholder="123" />
+        </div>
+
+        <button type="submit" class="pay-btn">Confirm Payment</button>
+      </form>
+    </section>
+
+    <aside class="summary-panel">
+      <h2>Order Summary</h2>
+      <div class="summary-item">
+        <p>Subtotal</p>
+        <span id="subtotal">₱0.00</span>
+      </div>
+      <div class="summary-item">
+        <p>Shipping</p>
+        <span id="shipping">₱99.00</span>
+      </div>
+      <div class="summary-total">
+        <p>Total</p>
+        <span id="total">₱0.00</span>
+      </div>
+      <button class="back-btn">← Back to Order</button>
+    </aside>
+  </main>
+
+  <script src="indexPay.js"></script>
+</body>
+</html>

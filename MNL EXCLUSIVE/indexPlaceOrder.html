@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="stylePlaceOrder.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <title>MNL Exclusives | Place Order</title>
+  
+</head>
+<body>
+  <header>
+  <h1>MNL</h1>
+    <h1 class="EX">EXCLUSIVE</h1>
+
+  <nav>
+    <ul>
+        <li><a href="Home Page.html">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="indexCart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        <li><a href="Login Page.html"><i class="fa-regular fa-circle-user"></i></a></li>
+    </ul>
+  </nav>
+  </header>
+
+  <div class="breadcrumb"> Cart > <b>Place Order</b> > Pay > Order Complete </div>
+
+  <main class="placeorder-layout">
+  
+    <!-- LEFT: SHIPPING FORM -->
+    <section class="form-section">
+      <h2>Shipping Information</h2>
+      <form id="shippingForm">
+        <label>Full Name</label>
+        <input type="text" id="fullname" placeholder="Enter full name" required />
+
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="09XXXXXXXXX" required />
+
+        <label>Address</label>
+        <textarea id="address" placeholder="Street, Barangay, City" required></textarea>
+
+        <label>Postal Code</label>
+        <input type="text" id="postal" placeholder="e.g. 1001" required />
+
+        <a id="continue" href="indexPay.html">Continue to Payment</a>
+
+      </form>
+    </section>
+
+  </main>
+
+</body>
+<script src="indexPlaceOrder.js"></script>
+</html>
