@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const discountEl = findEl(".discount-value", "discount"); // optional element showing discount
   const voucherInput = findEl(".voucher-input", "voucher");
   const applyVoucherBtn = findEl(".apply-voucher", "apply");
-  const checkoutBtn = findEl(".checkout-btn", "checkout");
+  const checkoutBtn = findEl(".checkout-btn", "checkoutBtn");
 
   let discount = 0; // decimal (e.g., 0.1 for 10%)
 
@@ -54,12 +54,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const shippingFee = rawSubtotal > 0 ? 99 : 0;
 
     const total = discountedSubtotal + shippingFee;
+    // compute correct item qty count
+    let qtyCount = 0;
+    items.forEach(item=>{
+    const checkbox = item.querySelector(".select-item");
+    const selected = checkbox ? checkbox.checked : true;
+    const qty = parseInt(item.querySelector(".qty")?.textContent,10) || 0;
+    if(selected) qtyCount += qty;
+});
+const itemCountEl = document.getElementById("itemCount");
+if(itemCountEl) itemCountEl.textContent = qtyCount;
+
+// save correct values for next page
+localStorage.setItem("cartSubtotal", discountedSubtotal);
+localStorage.setItem("cartItemCount", qtyCount);
 
     // Update DOM (use fallbacks if certain elements don't exist)
     if (subtotalEl) subtotalEl.textContent = `₱${discountedSubtotal.toFixed(2)}`;
     if (shippingEl) shippingEl.textContent = `₱${shippingFee.toFixed(2)}`;
     if (totalEl) totalEl.textContent = `₱${total.toFixed(2)}`;
     if (discountEl) discountEl.textContent = `-₱${discountAmount.toFixed(2)}`;
+    localStorage.setItem("cartTotal", total);
   }
 
   // Event delegation for qty buttons, checkboxes and remove buttons
@@ -133,60 +148,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // If fixed discount token is present, adapt calculateTotals to include it.
-  // We'll wrap the original calculateTotals with support for fixed discount:
-  const originalCalculate = calculateTotals;
-  calculateTotals = function () {
-    // compute values like before
-    const items = getCartItems();
-    let rawSubtotal = 0;
-    items.forEach(item => {
-      const checkbox = item.querySelector(".select-item");
-      const selected = checkbox ? checkbox.checked : true;
-      const price = parsePrice(item.querySelector(".item-price")?.textContent);
-      const qty = parseInt(item.querySelector(".qty")?.textContent, 10) || 0;
-      if (selected && qty > 0) rawSubtotal += price * qty;
-    });
-
-    // percentage discount:
-    const discountAmountPercent = rawSubtotal * discount;
-
-    // fixed discount (if any)
-    const fixedDiscount = (voucherInput && voucherInput.dataset.fixedDiscount) ? parseFloat(voucherInput.dataset.fixedDiscount) || 0 : 0;
-
-    // total discount is percent + fixed (but not exceeding subtotal)
-    let totalDiscount = discountAmountPercent + fixedDiscount;
-    if (totalDiscount > rawSubtotal) totalDiscount = rawSubtotal;
-
-    const discountedSubtotal = rawSubtotal - totalDiscount;
-    const shippingFee = rawSubtotal > 0 ? 99 : 0;
-    const total = discountedSubtotal + shippingFee;
-
-    if (subtotalEl) subtotalEl.textContent = `₱${discountedSubtotal.toFixed(2)}`;
-    if (shippingEl) shippingEl.textContent = `₱${shippingFee.toFixed(2)}`;
-    if (totalEl) totalEl.textContent = `₱${total.toFixed(2)}`;
-    if (discountEl) discountEl.textContent = `-₱${totalDiscount.toFixed(2)}`;
-  };
-
-  // Fix: reassign the updated calculateTotals back into the scope
-  // (if above reassignment didn't run because applyVoucherBtn missing, ensure we still have calculateTotals)
-  // If calculateTotals was replaced, this does nothing harmful.
-  calculateTotals = calculateTotals;
-
       // checkout button event //
-      document.getElementById("checkoutBtn").addEventListener("click", function(event) {
-      event.preventDefault(); // para hindi agad pumunta sa link
-      window.location.href = "indexPlaceOrder.html"; // JS redirect
+      if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const totalText = totalEl?.textContent || "₱0.00";
+    const totalNum = parsePrice(totalText);
+
+    if (totalNum <= 0) {
+      alert("Please select at least one item before checking out.");
+      return;
+    }
+
+    // ✅ Save total to localStorage for the next page
+    localStorage.setItem("cartSubtotal", parsePrice(subtotalEl.textContent));
+    const items = getCartItems();
+    let qtyCount = 0;
+    items.forEach(item=>{
+    const checkbox = item.querySelector(".select-item");
+    const selected = checkbox ? checkbox.checked : true;
+    const qty = parseInt(item.querySelector(".qty")?.textContent,10) || 0;
+    if(selected) qtyCount += qty;
+});
+
+localStorage.setItem("cartItemCount", qtyCount);
+
+    alert(`Checkout Done - Total: ₱${totalNum.toFixed(2)}`);
+    window.location.href = "indexPlaceOrder.html";
   });
-      const totalText = (totalEl && totalEl.textContent) ? totalEl.textContent : null;
-      const totalNum = totalText ? parsePrice(totalText) : 0;
-      if (!totalNum || totalNum <= 0) {
-        alert("Please select at least one item before checking out.");
-        return;
-      } else
-      alert(`Checkout OK — Total: ₱${totalNum.toFixed(2)}`);
-    });
-
-
+}
   // Initialize
   calculateTotals();
+});

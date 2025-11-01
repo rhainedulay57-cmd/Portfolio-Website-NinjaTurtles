@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("paymentForm");
   const backBtn = document.querySelector(".back-btn");
 
-  const subtotal = parseFloat(localStorage.getItem("cartTotal")) || 0;
+  const subtotal = parseFloat(localStorage.getItem("cartSubtotal")) || 0;
   const shipping = subtotal > 0 ? 99 : 0;
   const total = subtotal + shipping;
 

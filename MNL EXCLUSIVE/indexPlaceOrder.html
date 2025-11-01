@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="stylePlaceOrder.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <title>MNL Exclusives | Place Order</title>
+  <title>Place Order - MNL Exclusive</title>
   
 </head>
 <body>
@@ -15,15 +15,15 @@
 
   <nav>
     <ul>
-        <li><a href="Home Page.html">Home</a></li>
+        <li><a href="HomePage.html">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="indexCart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-        <li><a href="Login Page.html"><i class="fa-regular fa-circle-user"></i></a></li>
+        <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
     </ul>
   </nav>
   </header>
 
-  <div class="breadcrumb"> Cart > <b>Place Order</b> > Pay > Order Complete </div>
+  <div class="breadcrumb"> Cart  > <b> Place Order </b> >  Pay  > Order Complete </div>
 
   <main class="placeorder-layout">
   
@@ -43,13 +43,60 @@
         <label>Postal Code</label>
         <input type="text" id="postal" placeholder="e.g. 1001" required />
 
-        <a id="continue" href="indexPay.html">Continue to Payment</a>
+        <button type="submit" id="continue">Continue to Payment</button>
 
       </form>
     </section>
 
-  </main>
+    <section class="summary-panel">
+    <h2 id="orderTitle">ORDER SUMMARY | 1 ITEM(S)</h2>
 
+    <div class="summary-item">
+      <span>Item(s) subtotal</span>
+      <span id="itemSubtotal">PHP 499.00</span>
+    </div>
+
+    <div class="summary-item">
+      <span>Shipping fee</span>
+      <span id="shipping">PHP 99.00</span>
+    </div>
+
+    <div class="summary-total">
+      <span>TOTAL</span>
+      <span id="total">PHP 598.00</span>
+    </div>
+
+    <p style="font-size: 11px; margin-top: 10px;">
+      IMPORTANT: Confirmed orders can no longer be modified. Sales invoice will be issued electronically via email and app order history.
+    </p>
+    </section>
+  </main>
+    <footer class="footer">
+        <div class="footer-section terms">
+               <h3>Terms and Condition</h3>
+               <p>By using this website, you agree to our terms, which include accurate use of our site and products, understanding that prices and availability may change without notice, that all purchases are subject to confirmation, that returns are accepted within 7 days if items are unworn and in original condition, that all content including designs and images belong to Manila Exclusive, and may not be copied or used without permission, and that we are not liable for any damages resulting from use of this site or our products.</p>
+        </div>
+
+        <div class="footer-section Help">
+            <h3>Help</h3>
+            <a href="#">My Account</a>
+            <a href="#">FAQ</a>
+            <a href="#">Pick up in store</a>
+            <a href="#">Exchange Policy</a>
+            <a href="#">Bulk Order</a>
+        </div>
+
+        <div class="footer-section Follow">
+          <h3>Follow Us</h3>
+          <p>Tiktok : <a href="https://www.tiktok.com/@manilaexclusives2">Manila Exclusive</a></p>
+        </div>
+
+        <div class="footer-section Contact">
+            <h3>Contact Us</h3>
+            <p>J.P. Rizal Extension, West Rembo, 1644 City of Taguig, Metro Manila, Philippines</p>
+            <p>Email: <a href="#">ManilaExclusive@Gmail.com</p></a>
+        </div>
+    </footer>
 </body>
 <script src="indexPlaceOrder.js"></script>
 </html>

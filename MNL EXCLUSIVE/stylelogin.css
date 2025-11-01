@@ -54,11 +54,11 @@ h1 {
 header {
     background-color: grey;
     padding: 30px;
-    border: 2px solid black;
     width: 100%;
     z-index: 10;
     position: fixed;
     top: 0;
+    box-shadow: 0px 2px 10px rgb(0, 0, 0);
 }
 li a:hover {
     color: white;
@@ -103,7 +103,7 @@ ul {
   color: white;
 }
 .login-btn {
-  width: 30%;
+  width: 50%;
   background: black;
   color: white;
   border: none;
@@ -120,7 +120,9 @@ ul {
   background: white;
   color: black;
 }
-
+#show {
+  border-radius: 5px;
+}
 .create-link {
   margin: 5px 0;
 }
@@ -152,8 +154,8 @@ ul {
   margin-bottom: 25px;
 }
 /* Inputs */
-.login-container input[type="email"],
-.login-container input[type="password"] {
+.login-container input#email,
+.login-container input#password {
   width: 100%;
   padding: 10px;
   margin: 10px -10px;
@@ -161,7 +163,11 @@ ul {
   border-radius: 4px;
   font-size: 15px;
   outline: none;
-
+}
+.showpass {
+  font-size: 10px;
+  position: relative;
+  left: 145px;
 }
 /* Remember + Forgot */
 .options {

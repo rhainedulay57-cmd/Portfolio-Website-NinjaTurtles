@@ -10,6 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector(".home-btn").addEventListener("click", () => {
     localStorage.clear();
-    window.location.href = "Home Page.html";
+    window.location.href = "HomePage.html";
   });
 });

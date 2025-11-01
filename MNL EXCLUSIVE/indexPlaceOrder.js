@@ -1,19 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const subtotalEl = document.getElementById("subtotal");
+  const itemSubtotalEl = document.getElementById("itemSubtotal");
   const shippingEl = document.getElementById("shipping");
   const totalEl = document.getElementById("total");
   const form = document.getElementById("shippingForm");
   const backBtn = document.querySelector(".back-btn");
 
-  // Load total from previous cart page (saved in localStorage)
-  const savedTotal = localStorage.getItem("cartTotal");
-  const subtotal = savedTotal ? parseFloat(savedTotal) : 0;
-  const shipping = subtotal > 0 ? 99 : 0;
+  const orderTitleEl = document.getElementById("orderTitle");
+  const count = localStorage.getItem("cartItemCount") || 0;
+  orderTitleEl.textContent = `ORDER SUMMARY | ${count} ITEM(S)`;
+
+  // Load subtotal from previous page (cart)
+ const savedSubtotal = localStorage.getItem("cartSubtotal");
+ const subtotal = savedSubtotal ? parseFloat(savedSubtotal) : 0;
+  // Shipping fee
+  const shipping = subtotal > 0 ? 99 : 0; // pwede mong baguhin kung gusto mo exact 99
+
+  // Compute correct total
   const total = subtotal + shipping;
 
-  subtotalEl.textContent = `₱${subtotal.toFixed(2)}`;
+  // Display values
+  itemSubtotalEl.textContent = `₱${subtotal.toFixed(2)}`;
   shippingEl.textContent = `₱${shipping.toFixed(2)}`;
-  totalEl.textContent = `₱${total.toFixed(2)}`;
+  totalEl.textContent = `₱${total.toFixed(2)}`; 
 
   // Handle form submission
   form.addEventListener("submit", (e) => {
@@ -29,8 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Save order info to localStorage for the next step (Pay)
+    // Save to localStorage for next page
     localStorage.setItem("shippingInfo", JSON.stringify({ name, phone, address, postal, total }));
     alert("Proceeding to payment...");
+    window.location.href = "indexPay.html";
   });
 });

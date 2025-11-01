@@ -14,19 +14,23 @@
         
         <nav>
             <ul>
-                <li><a href="Home Page.html">Home</a></li>
-                <li><a href="Login Page.html"><i class="fa-regular fa-circle-user"></i></a></li>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
             </ul>
         </nav>
     </header>
 
     <div class="login-container">
         <h2>Create Account</h2>
-        <form>
-            <input type="firstname" placeholder="First Name" required>
-            <input type="lastname" placeholder="Last Name" required>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
+        <form id="CreateAccountForm">
+            <input type id="firstname" placeholder="First Name" required>
+            <input type id="lastname" placeholder="Last Name" required>
+            <input type id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <div class="showpass">
+             <label>
+             <input type="checkbox" onclick="togglePass()"> Show Password </label>
+            </div>
 
             <label class="gender-label">Gender</label>
             <div class="gender-options">
@@ -42,7 +46,7 @@
                 </label>
             </div>
 
-            <a href="Login Page.html" class="login-btn">Create Account</a>
+            <button type="submit" class="login-btn">Create Account</button>
         </form>
     </div>
         <footer class="footer">
@@ -71,6 +75,29 @@
             <p>Email: <a href="#">ManilaExclusive@Gmail.com</p></a>
         </div>
     </footer>
+<script>
+    function togglePass(){
+    const pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+    const form = document.getElementById("CreateAccountForm");
+    form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
+    const firstname = document.getElementById("firstname").value.trim();
+    const lastname = document.getElementById("lastname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (!firstname || !lastname || !email || !password) {
+    alert("Please complete all fields.");
+    return;
+  }
+
+  // later pwede mo ilagay saving to localStorage or send sa server
+  alert("Account Created Successfully!");
+  window.location.href = "LoginPage.html";
+});
+</script>
 </body>
 </html>
