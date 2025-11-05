@@ -16,7 +16,8 @@
     <ul>
         <li><a href="#home">Home</a></li>
         <li><a href="#about">About Us</a></li>
-        <li><a href="indexCart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+        <li><a href="indexCart.html" class="cart-icon-link"><i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-quantity-indicator">0</span></a></li>
         <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
     </ul>
   </nav>
@@ -30,11 +31,201 @@
         </p>
       </div>
       <nav class="nav-links">
-            <a href="#">NEW & FEATURED</a>
-            <a href="#">SHIRTS</a>
-            <a href="#">PANTS</a> 
+            <a href="#new">NEW & FEATURED</a>
+            <a href="#shirt">SHIRTS</a>
+            <a href="#pants">PANTS</a> 
       </nav>
-    </section>
+  </section>
+
+<section id="new">
+  <div class="container">
+
+    <div class="itemcard" data-item-id="item1">
+      <img src="interlude.jpg" alt="Manila's interlude" class="item-image">
+      <h5>Manila's Interlude</h5>
+      <div class="color-options">
+        <p>Color: <span class="selected-color-display"></span></p>
+        <div class="colors">
+          <div class="color" data-color="Black" style="background:#000;"></div>
+          <div class="color" data-color="White" style="background:#fff;"></div>
+        </div>
+      </div>
+      <div class="size-option">
+        <p>Size: <span class="selected-size-display"></span></p>
+        <div class="sizes">
+          <button class="size">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+          <button class="size">XXL</button>
+        </div>
+      </div>
+      <div class="price">
+        <p>₱<span class="item-price">399.00</span></p>
+      </div>
+      <div class="quantity">
+        <button class="qty-minus" disabled>−</button> <span class="item-qty">0</span> <button class="qty-plus">+</button>
+      </div>
+      <button class="add-to-cart-btn" disabled>ADD TO CART</button></div>
+
+    <div class="itemcard" data-item-id="item2">
+      <img src="stay.jpg" alt="Stay Exclusive" class="item-image">
+      <h5>Stay Exclusives</h5>
+      <div class="color-options">
+        <p>Color: <span class="selected-color-display"></span></p>
+        <div class="colors">
+          <div class="color" data-color="Black" style="background:#000;"></div>
+          <div class="color" data-color="White" style="background:#fff;"></div>
+        </div>
+      </div>
+      <div class="size-option">
+        <p>Size: <span class="selected-size-display"></span></p>
+        <div class="sizes">
+          <button class="size">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+          <button class="size">XXL</button>
+        </div>
+      </div>
+      <div class="price">
+        <p>₱<span class="item-price">399.00</span></p>
+      </div>
+      <div class="quantity">
+        <button class="qty-minus" disabled>−</button>
+        <span class="item-qty">0</span>
+        <button class="qty-plus">+</button>
+      </div>
+      <button class="add-to-cart-btn" disabled>ADD TO CART</button>
+    </div>
+
+    <div class="itemcard" data-item-id="item3">
+      <img src="Meshwhite27.jpeg" alt="Mesh Jersey 27 White" class="item-image">
+      <h5>Mesh Jersey 27 White</h5>
+      <div class="color-options">
+        <p>Color: <span class="selected-color-display"></span></p>
+        <div class="colors">
+          <div class="color" data-color="White" style="background:#fff;"></div>
+        </div>
+      </div>
+      <div class="size-option">
+        <p>Size: <span class="selected-size-display"></span></p>
+        <div class="sizes">
+          <button class="size">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+          <button class="size">XXL</button>
+        </div>
+      </div>
+      <div class="price">
+        <p>₱<span class="item-price">499.00</span></p>
+      </div>
+      <div class="quantity">
+        <button class="qty-minus" disabled>−</button>
+        <span class="item-qty">0</span>
+        <button class="qty-plus">+</button>
+      </div>
+      <button class="add-to-cart-btn" disabled>ADD TO CART</button>
+    </div>
+
+    <div class="itemcard" data-item-id="item4">
+      <img src="sweatpants.jpeg" alt="Baggy Sweat Pants" class="item-image">
+      <h5>Baggy Sweat Pants</h5>
+      <div class="color-options">
+        <p>Color: <span class="selected-color-display"></span></p>
+        <div class="colors">
+          <div class="color" data-color="Dark Gray" style="background:rgb(109,109,109);"></div>
+          <div class="color" data-color="Light Gray" style="background:rgb(170,170,170);"></div>
+        </div>
+      </div>
+      <div class="size-option">
+        <p>Size: <span class="selected-size-display"></span></p>
+        <div class="sizes">
+          <button class="size">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+          <button class="size">XXL</button>
+        </div>
+      </div>
+      <div class="price">
+        <p>₱<span class="item-price">699.00</span></p>
+      </div>
+      <div class="quantity">
+        <button class="qty-minus">−</button>
+        <span class="item-qty">0</span>
+        <button class="qty-plus">+</button>
+      </div>
+      <button class="add-to-cart-btn" disabled>ADD TO CART</button>
+    </div>
+
+    <div class="itemcard" data-item-id="item5">
+      <img src="MEslim.jpeg" alt="ME SLIM FIT" class="item-image">
+      <h5>M.E Slim fit</h5>
+      <div class="color-options">
+        <p>Color: <span class="selected-color-display"></span></p>
+        <div class="colors">
+          <div class="color" data-color="White" style="background:rgb(255, 255, 255);"></div>
+          <div class="color" data-color="Black" style="background:rgb(0, 0, 0);"></div>
+        </div>
+      </div>
+      <div class="size-option">
+        <p>Size: <span class="selected-size-display"></span></p>
+        <div class="sizes">
+          <button class="size">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+          <button class="size">XXL</button>
+        </div>
+      </div>
+      <div class="price">
+        <p>₱<span class="item-price">529.00</span></p>
+      </div>
+      <div class="quantity">
+        <button class="qty-minus" disabled>−</button>
+        <span class="item-qty">0</span>
+        <button class="qty-plus">+</button>
+      </div>
+      <button class="add-to-cart-btn" disabled>ADD TO CART</button>
+    </div>
+
+    <div class="itemcard" data-item-id="item6">
+      <img src="letemknow.jpeg" alt="Let em know" class="item-image">
+      <h5>Let em know</h5>
+      <div class="color-options">
+        <p>Color: <span class="selected-color-display"></span></p>
+        <div class="colors">
+          <div class="color" data-color="Khaki" style="background:rgb(240,230,140);"></div>
+        </div>
+      </div>
+      <div class="size-option">
+        <p>Size: <span class="selected-size-display"></span></p>
+        <div class="sizes">
+          <button class="size">S</button>
+          <button class="size">M</button>
+          <button class="size">L</button>
+          <button class="size">XL</button>
+          <button class="size">XXL</button>
+        </div>
+      </div>
+      <div class="price">
+        <p>₱<span class="item-price">351.12</span></p>
+      </div>
+      <div class="quantity">
+        <button class="qty-minus" disabled>−</button>
+        <span class="item-qty">0</span>
+        <button class="qty-plus">+</button>
+      </div>
+      <button class="add-to-cart-btn" disabled>ADD TO CART</button>
+    </div>
+
+  </div>
+</section>
+
+<script src="newandfeatured.js"></script>
+
     <section id="about">
       <div class="about-text">
         <h2>About Us</h2>
@@ -76,5 +267,6 @@
             <p>Email: <a href="#">ManilaExclusive@Gmail.com</p></a>
         </div>
     </footer>
+
 </body>
 </html>

@@ -1,183 +1,220 @@
-// indexCart.js
+// js/indexCart.js
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Helpers to find UI elements (support both class and id variants)
-  const findEl = (selClass, selId) => document.querySelector(selClass) || document.getElementById(selId);
+    const findEl = (selClass, selId) => document.querySelector(selClass) || document.getElementById(selId);
 
-  const subtotalEl = findEl(".subtotal-value", "subtotal");
-  const shippingEl = findEl(".shipping-value", "shipping");
-  const totalEl = findEl(".total-value", "total");
-  const discountEl = findEl(".discount-value", "discount"); // optional element showing discount
-  const voucherInput = findEl(".voucher-input", "voucher");
-  const applyVoucherBtn = findEl(".apply-voucher", "apply");
-  const checkoutBtn = findEl(".checkout-btn", "checkoutBtn");
+    const cartItemsContainer = findEl("#cart-items-container"); // Changed to ID selector
+    const subtotalEl = findEl(".subtotal-value", "subtotal");
+    const shippingEl = findEl(".shipping-value", "shipping");
+    const totalEl = findEl(".total-value", "total");
+    const discountEl = findEl(".discount-value", "discount"); // Now exists in HTML
+    const voucherInput = findEl(".voucher-input", "voucher");
+    const applyVoucherBtn = findEl(".apply-voucher", "apply");
+    const checkoutBtn = findEl(".checkout-btn", "checkoutBtn");
+    const itemCountEl = document.getElementById("itemCount");
 
-  let discount = 0; // decimal (e.g., 0.1 for 10%)
+    let discount = 0; // percentage discount (e.g., 0.1 for 10%)
+    let fixedDiscountAmount = 0; // For fixed amount discounts like ₱50
 
-  // Utility: return current cart item elements (in case items are removed/added)
-  function getCartItems() {
-    return Array.from(document.querySelectorAll(".cart-item"));
-  }
+    function getCartItemElements() {
+        return Array.from(document.querySelectorAll(".cart-item"));
+    }
 
-  // Parse a price string like "₱1,234.56" into a number 1234.56
-  function parsePrice(text) {
-    if (!text && text !== 0) return 0;
-    // Remove anything except digits, dot, minus and keep decimal
-    const cleaned = String(text).replace(/[^0-9.\-]+/g, "");
-    const v = parseFloat(cleaned);
-    return Number.isFinite(v) ? v : 0;
-  }
+    function parsePrice(text) {
+        if (!text && text !== 0) return 0;
+        const cleaned = String(text).replace(/[^0-9.\-]+/g, "");
+        const v = parseFloat(cleaned);
+        return Number.isFinite(v) ? v : 0;
+    }
 
-  // Recalculate subtotal, discount, shipping and total
-  function calculateTotals() {
-    const items = getCartItems();
-    let rawSubtotal = 0; // sum(price * qty) for selected items
+    function displayCartItems() {
+        const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        cartItemsContainer.innerHTML = ''; // Clear existing items
 
-    items.forEach(item => {
-      const checkbox = item.querySelector(".select-item");
-      // if checkbox doesn't exist, treat item as selected
-      const selected = checkbox ? checkbox.checked : true;
+        if (storedCartItems.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty. <a href="HomePage.html#new">Start shopping!</a></p>';
+            if (checkoutBtn) checkoutBtn.setAttribute('disabled', 'disabled');
+            if (applyVoucherBtn) applyVoucherBtn.setAttribute('disabled', 'disabled');
+            // Ensure discount is reset if cart becomes empty
+            discount = 0;
+            fixedDiscountAmount = 0;
+            if (voucherInput) delete voucherInput.dataset.fixedDiscount;
+        } else {
+            if (checkoutBtn) checkoutBtn.removeAttribute('disabled');
+            if (applyVoucherBtn) applyVoucherBtn.removeAttribute('disabled');
 
-      const priceEl = item.querySelector(".item-price");
-      const qtyEl = item.querySelector(".qty");
+            storedCartItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.dataset.itemId = `${item.id}-${item.color}-${item.size}`;
+                
+                itemElement.innerHTML = `
+                    <input type="checkbox" class="select-item" checked>
+                    <img src="${item.imageUrl}" alt="${item.name}" class="item-thumbnail">
+                    <div class="item-details">
+                        <h4 class="item-name">${item.name}</h4>
+                        <p class="item-variant">Color: ${item.color}, Size: ${item.size}</p>
+                        <p class="item-price">₱${item.price.toFixed(2)}</p>
+                    </div>
+                    <div class="item-qty-controls">
+                        <button class="decrease" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                        <span class="qty">${item.quantity}</span>
+                        <button class="increase">+</button>
+                    </div>
+                    <button class="remove-item"><i class="fas fa-trash-alt"></i></button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+            });
+        }
+        calculateTotals();
+    }
 
-      const price = parsePrice(priceEl ? priceEl.textContent : priceEl?.value);
-      const qty = qtyEl ? parseInt(qtyEl.textContent, 10) || 0 : 0;
+    function calculateTotals() {
+        const items = getCartItemElements();
+        let rawSubtotal = 0;
+        let qtyCount = 0;
 
-      if (selected && qty > 0) rawSubtotal += price * qty;
+        items.forEach(itemEl => {
+            const checkbox = itemEl.querySelector(".select-item");
+            const selected = checkbox ? checkbox.checked : true;
+
+            const priceEl = itemEl.querySelector(".item-price");
+            const qtyEl = itemEl.querySelector(".qty");
+
+            const price = parsePrice(priceEl ? priceEl.textContent : 0);
+            const qty = qtyEl ? parseInt(qtyEl.textContent, 10) || 0 : 0;
+
+            if (selected) {
+                rawSubtotal += price * qty;
+                qtyCount += qty;
+            }
+        });
+
+        let currentDiscountValue = 0;
+        if (fixedDiscountAmount > 0) {
+            currentDiscountValue = fixedDiscountAmount;
+        } else if (discount > 0) {
+            currentDiscountValue = rawSubtotal * discount;
+        }
+        
+        const discountedSubtotal = Math.max(0, rawSubtotal - currentDiscountValue);
+
+        const shippingFee = rawSubtotal > 0 ? 99 : 0;
+
+        const total = discountedSubtotal + shippingFee;
+
+        if (subtotalEl) subtotalEl.textContent = `₱${discountedSubtotal.toFixed(2)}`;
+        if (shippingEl) shippingEl.textContent = `₱${shippingFee.toFixed(2)}`;
+        if (totalEl) totalEl.textContent = `₱${total.toFixed(2)}`;
+        if (discountEl) discountEl.textContent = `-₱${currentDiscountValue.toFixed(2)}`; // Display discount
+        if (itemCountEl) itemCountEl.textContent = qtyCount;
+
+        localStorage.setItem("cartSubtotal", discountedSubtotal.toFixed(2));
+        localStorage.setItem("cartItemCount", qtyCount);
+        localStorage.setItem("cartTotal", total.toFixed(2));
+    }
+
+    document.addEventListener("click", (e) => {
+        const inc = e.target.closest(".increase");
+        const dec = e.target.closest(".decrease");
+        const remove = e.target.closest(".remove-item");
+        const itemEl = e.target.closest(".cart-item");
+
+        if (inc || dec) {
+            const qtyEl = itemEl.querySelector(".qty");
+            let qty = parseInt(qtyEl.textContent, 10) || 0;
+
+            if (inc) qty++;
+            if (dec && qty > 1) qty--;
+
+            qtyEl.textContent = qty;
+            itemEl.querySelector(".decrease").disabled = (qty <= 1);
+            
+            const itemId = itemEl.dataset.itemId;
+            let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const itemIndex = cartItems.findIndex(item => `${item.id}-${item.color}-${item.size}` === itemId);
+            if (itemIndex > -1) {
+                cartItems[itemIndex].quantity = qty;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+            calculateTotals();
+        }
+
+        if (remove) {
+            if (!itemEl) return;
+            const itemIdToRemove = itemEl.dataset.itemId;
+
+            itemEl.classList.add("fade-out");
+            setTimeout(() => {
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                cartItems = cartItems.filter(item => `${item.id}-${item.color}-${item.size}` !== itemIdToRemove);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+                itemEl.remove();
+                displayCartItems(); // Re-render and recalculate
+            }, 260);
+        }
     });
 
-    // discount amount and discounted subtotal
-    const discountAmount = rawSubtotal * discount;
-    const discountedSubtotal = rawSubtotal - discountAmount;
-
-    // shipping rule: free when rawSubtotal is 0 (no items), otherwise fixed fee
-    const shippingFee = rawSubtotal > 0 ? 99 : 0;
-
-    const total = discountedSubtotal + shippingFee;
-    // compute correct item qty count
-    let qtyCount = 0;
-    items.forEach(item=>{
-    const checkbox = item.querySelector(".select-item");
-    const selected = checkbox ? checkbox.checked : true;
-    const qty = parseInt(item.querySelector(".qty")?.textContent,10) || 0;
-    if(selected) qtyCount += qty;
-});
-const itemCountEl = document.getElementById("itemCount");
-if(itemCountEl) itemCountEl.textContent = qtyCount;
-
-// save correct values for next page
-localStorage.setItem("cartSubtotal", discountedSubtotal);
-localStorage.setItem("cartItemCount", qtyCount);
-
-    // Update DOM (use fallbacks if certain elements don't exist)
-    if (subtotalEl) subtotalEl.textContent = `₱${discountedSubtotal.toFixed(2)}`;
-    if (shippingEl) shippingEl.textContent = `₱${shippingFee.toFixed(2)}`;
-    if (totalEl) totalEl.textContent = `₱${total.toFixed(2)}`;
-    if (discountEl) discountEl.textContent = `-₱${discountAmount.toFixed(2)}`;
-    localStorage.setItem("cartTotal", total);
-  }
-
-  // Event delegation for qty buttons, checkboxes and remove buttons
-  document.addEventListener("click", (e) => {
-    const inc = e.target.closest(".increase");
-    const dec = e.target.closest(".decrease");
-    const remove = e.target.closest(".remove-item");
-
-    if (inc || dec) {
-      const btn = inc || dec;
-      const item = btn.closest(".cart-item");
-      const qtyEl = item.querySelector(".qty");
-      let qty = parseInt(qtyEl.textContent, 10) || 0;
-
-      if (btn.classList.contains("increase")) qty++;
-      if (btn.classList.contains("decrease") && qty > 1) qty--;
-
-      qtyEl.textContent = qty;
-      calculateTotals();
-    }
-
-    if (remove) {
-      const item = remove.closest(".cart-item");
-      if (!item) return;
-      item.classList.add("fade-out");
-      setTimeout(() => {
-        item.remove();
-        calculateTotals();
-      }, 260);
-    }
-  });
-
-  // Listen to checkbox changes
-  document.addEventListener("change", (e) => {
-    if (e.target && e.target.matches(".select-item")) {
-      calculateTotals();
-    }
-  });
-
-  // Voucher application
-  if (applyVoucherBtn && voucherInput) {
-    applyVoucherBtn.addEventListener("click", () => {
-      const code = voucherInput.value.trim().toUpperCase();
-      if (!code) {
-        discount = 0;
-        alert("Please enter a voucher code.");
-        calculateTotals();
-        return;
-      }
-
-      // Example voucher rules
-      if (code === "MNL10") {
-        discount = 0.10;
-        alert("Voucher applied: 10% off ✅");
-      } else if (code === "MNL50") {
-        // fixed 50 pesos off example (handled as percentage relative to subtotal isn't ideal,
-        // but we can simulate fixed discount by computing it as a fraction — better to handle separately)
-        // we'll implement MNL50 as fixed 50 PHP discount
-        // to support fixed discount we set discount to 0 and store fixedDiscount separately
-        discount = 0;
-        // store fixed discount in a data attribute on the voucher input for calculation
-        voucherInput.dataset.fixedDiscount = "50";
-        alert("Voucher applied: ₱50 off ✅");
-      } else {
-        discount = 0;
-        delete voucherInput.dataset.fixedDiscount;
-        alert("Invalid voucher code ❌");
-      }
-
-      calculateTotals();
+    document.addEventListener("change", (e) => {
+        if (e.target && e.target.matches(".select-item")) {
+            calculateTotals();
+        }
     });
-  }
 
-      // checkout button event //
-      if (checkoutBtn) {
-  checkoutBtn.addEventListener("click", (e) => {
-    e.preventDefault();
+    if (applyVoucherBtn && voucherInput) {
+        applyVoucherBtn.addEventListener("click", () => {
+            const code = voucherInput.value.trim().toUpperCase();
+            if (!code) {
+                discount = 0;
+                fixedDiscountAmount = 0;
+                if (voucherInput) delete voucherInput.dataset.fixedDiscount;
+                alert("Please enter a voucher code.");
+                calculateTotals();
+                return;
+            }
 
-    const totalText = totalEl?.textContent || "₱0.00";
-    const totalNum = parsePrice(totalText);
-
-    if (totalNum <= 0) {
-      alert("Please select at least one item before checking out.");
-      return;
+            if (code === "MNL10") {
+                discount = 0.10;
+                fixedDiscountAmount = 0;
+                if (voucherInput) delete voucherInput.dataset.fixedDiscount;
+                alert("Voucher applied: 10% off ✅");
+            } else if (code === "MNL50") {
+                discount = 0;
+                fixedDiscountAmount = 50;
+                voucherInput.dataset.fixedDiscount = "50";
+                alert("Voucher applied: ₱50 off ✅");
+            } else {
+                discount = 0;
+                fixedDiscountAmount = 0;
+                if (voucherInput) delete voucherInput.dataset.fixedDiscount;
+                alert("Invalid voucher code ❌");
+            }
+            calculateTotals();
+        });
     }
 
-    // ✅ Save total to localStorage for the next page
-    localStorage.setItem("cartSubtotal", parsePrice(subtotalEl.textContent));
-    const items = getCartItems();
-    let qtyCount = 0;
-    items.forEach(item=>{
-    const checkbox = item.querySelector(".select-item");
-    const selected = checkbox ? checkbox.checked : true;
-    const qty = parseInt(item.querySelector(".qty")?.textContent,10) || 0;
-    if(selected) qtyCount += qty;
-});
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
 
-localStorage.setItem("cartItemCount", qtyCount);
+            const totalNum = parsePrice(totalEl?.textContent || "0");
+            const subtotalNum = parsePrice(subtotalEl?.textContent || "0");
+            const itemCountNum = parseInt(itemCountEl?.textContent || "0", 10);
 
-    alert(`Checkout Done - Total: ₱${totalNum.toFixed(2)}`);
-    window.location.href = "indexPlaceOrder.html";
-  });
-}
-  // Initialize
-  calculateTotals();
+            if (itemCountNum <= 0) {
+                alert("Please select at least one item before checking out.");
+                return;
+            }
+
+            localStorage.setItem("cartSubtotal", subtotalNum.toFixed(2));
+            localStorage.setItem("cartItemCount", itemCountNum);
+            localStorage.setItem("cartTotal", totalNum.toFixed(2));
+
+            alert(`Proceeding to checkout - Total: ₱${totalNum.toFixed(2)}`);
+            window.location.href = "indexPlaceOrder.html";
+        });
+    }
+
+    displayCartItems();
 });

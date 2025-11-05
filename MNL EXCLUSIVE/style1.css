@@ -53,6 +53,8 @@ h1 {
     position: relative;
     top: -30px;
     color: white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 5px;
 }
 .EX {
     margin-left: 70px;
@@ -64,6 +66,13 @@ header {
     width: 100%;
     z-index: 10;
     position: fixed;
+
+    background-image: url('backgroundheader.jpg'); /* PALITAN ITO ng aktwal na path ng iyong image */
+    background-color: rgba(255, 255, 255, 0.3);
+    background-blend-mode: overlay;
+    background-size: cover; /* Para masiguro na sakop ng image ang buong header */
+    background-position: center; /* I-center ang image */
+    background-repeat: no-repeat; /* Huwag ulitin ang image */
 }
 li a:hover {
     color: #f7b733;
@@ -77,26 +86,66 @@ h3 {
 ul {
     list-style: none;
 }
+/* Para sa Cart Icon Link sa Header */
+.cart-icon-link {
+    position: relative; /* Ginagamit ito para maging reference sa absolute positioning ng quantity indicator */
+    display: inline-block; /* Mahalaga para gumana ang positioning */
+    /* Maaari mo ring ayusin ang padding o margin dito kung kinakailangan */
+    margin-top: 0;
+}
+
+/* Para sa Cart Quantity Indicator (ang number) */
+.cart-quantity-indicator {
+    position: absolute;
+    top: -8px; /* Adjustment para sa vertical position (mas mataas) */
+    right: -12px; /* Adjustment para sa horizontal position (mas kanana) */
+    background-color: black;
+    color: #ffffff; /* Kulay ng text (e.g., puti) */
+    border-radius: 50%; /* Gawing bilog */
+    padding: 2px 2px; /* Padding sa loob ng bilog */
+    font-size: 0.7em; /* Laki ng font */
+    font-weight: bold; /* Gawing bold */
+    line-height: 1; /* Para maging centered ang text vertically */
+    text-align: center;
+    min-width: 18px; /* Minimum width para sa isang digit (e.g., '9') */
+    display: none; /* Default na nakatago; ang JavaScript ang bahala magpakita */
+}
 /* NAV TOP V2 */
 .nav-links a {
     margin: 0 30px;
     margin-top: -100px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.501);
+    color: rgb(0, 0, 0);
     font-weight: bold;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+
     position: relative;
+    z-index: 10;
 }
 .nav-links {
     margin-top: 60px;
+    margin-left: 0px;
     align-items: center;   
     text-align: center;
     justify-content: center; 
     display: flex;
-    position: relative;
 }
-.nav-links a:hover {
-    text-decoration: underline;
-    color: white;
+.nav-links a:hover{
+  color: white;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: rgb(0, 0, 0);
+  left: 0;
+  bottom: -6px;
+  transition: 300ms ease;
+  font-family: sans-serif;
+}
+.nav-links a:hover::after {
+  width: 100%;
 }
 /* HOME PAGE MAIN */
 .home-text {
@@ -181,6 +230,97 @@ ul {
   margin-left: 5px;
   position: relative;
   bottom: 20px;
+}
+
+#new {
+  min-height: 200vh;
+  width: 100%;
+  overflow: hidden;
+  background: url(bgblackgrey.jpg);
+}
+#new .container {
+  display: flex;
+  flex-wrap: wrap;          
+  justify-content: center;                 
+  padding: 20px;
+  gap: 50px;
+}
+.itemcard {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid black;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  max-width: 250px;
+  text-align: center;
+  margin: 80px 80px;
+}
+.color-option, .size-option {
+  margin: 10px 0;
+}
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.color {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+}
+.color.selected {
+  border: 3px solid black;
+}
+.sizes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.size {
+  border: 1px solid #ddd;
+  padding: 8px 16px;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.size.selected {
+  border: 2px solid black;
+  background: #eee;
+}
+.price {
+  font-size: 1em;
+  margin: 15px 0;
+}
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+.quantity button {
+  border: none;
+  background: #eee;
+  padding: 6px 12px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.add-to-cart-btn {
+  width: 80%;
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+}
+.item-image {
+  height: 200px;
+  width: 200px;
 }
 /* FOOTER TERMS */
 .footer {

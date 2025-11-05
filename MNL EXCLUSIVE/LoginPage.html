@@ -11,12 +11,7 @@
     <header>
     <h1>MNL</h1>
     <h1 class="EX">EXCLUSIVE</h1>
-<nav>    
-    <ul>
-        <li><a href="HomePage.html">Home</a></li>
-        <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
-    </ul>
-</nav>
+    
 </header>
 <div class="login-container">
 <h2>Login</h2>
@@ -66,13 +61,15 @@
         </div>
     </footer>
 <script>
+
     function togglePass(){
     const pass = document.getElementById("password");
-    pass.type = pass.type === "password" ? "text" : "password";
-}
+    pass.type = pass.type === "password" ? "text" : "password";}
+
     const form = document.getElementById("LoginForm");
     form.addEventListener("submit", (e) => {
     e.preventDefault();
+
 
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -81,10 +78,14 @@
     alert("Please complete all fields.");
     return;
     }
-
-    // later pwede mo ilagay saving to localStorage or send sa server
+    // example login check (pwede mong palitan kung gusto mo)
+    if (email === "rhainedulay57@gmail.com" && password === "Mackmack") {
+    // kapag tama ang username at password, pupunta sa ibang HTML file
     alert("Login Successfully!");
     window.location.href = "HomePage.html";
+    } else {
+    alert("Invalid username or password!");
+    }
 });
 </script>
  </body>

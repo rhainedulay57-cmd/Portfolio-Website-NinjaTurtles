@@ -1,120 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cart - MNL Exclusives</title>
-  <link rel="stylesheet" href="styleCart.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart - MNL Exclusives</title>
+    <link rel="stylesheet" href="styleCart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-  <header>
-  <h1>MNL</h1>
-    <h1 class="EX">EXCLUSIVE</h1>
+    <header>
+        <h1>MNL</h1>
+        <h1 class="EX">EXCLUSIVE</h1>
 
-  <nav>
-    <ul>
-        <li><a href="HomePage.html">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="indexCart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-        <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
-    </ul>
-  </nav>
-  </header>
+        <nav>
+            <ul>
+                <li><a href="HomePage.html">Home</a></li>
+                <li><a href="HomePage.html#about">About Us</a></li>
+                <li><a href="indexCart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <div class="breadcrumb"><b>  Cart  </b> >  Place Order  >  Pay  >  Order Complete </div>
+    <div class="breadcrumb"><b>  Cart  </b> >  Place Order  >  Pay  >  Order Complete </div>
 
-  <main class="cart-layout">
-    <!-- CART ITEMS -->
-    <section class="cart-section">
-      <div class="cart-item">
-        <input type="checkbox" class="select-item" />
-        <img src="/" alt="Jersey" />
-        <div class="item-info">
-          <h4>Manila Exclusive Jersey | Large</h4>
-          <p>BLACK</p>
-        </div>
-        <div class="item-price">₱599</div>
-        <div class="quantity">
-          <button class="qty-btn decrease">−</button>
-          <span class="qty">1</span>
-          <button class="qty-btn increase">+</button>
-        </div>
-      </div>
+    <main class="cart-layout">
+        <section class="cart-section" id="cart-items-container">
+            <p class="empty-cart-message">Your cart is empty. <a href="HomePage.html#new">Start shopping!</a></p>
+        </section>
 
-      <div class="cart-item selected">
-        <input type="checkbox" class="select-item" checked />
-        <img src="/" alt="V2 Shirt" />
-        <div class="item-info">
-          <h4>Manila Exclusive V2 T-Shirt | Large</h4>
-          <p>WHITE & BLACK</p>
-        </div>
-        <div class="item-price">₱499</div>
-        <div class="quantity">
-          <button class="qty-btn decrease">−</button>
-          <span class="qty">1</span>
-          <button class="qty-btn increase">+</button>
-        </div>
-      </div>
+        <aside class="summary-panel">
+            <h2>Order summary</h2>
+            <div class="summary-item">
+                <p>Subtotal (<span id="itemCount">0</span> items)</p>
+                <span class="subtotal-value" id="subtotal">₱0.00</span>
+            </div>
+            <div class="summary-item discount-row">
+                <p>Discount</p>
+                <span class="discount-value" id="discount">-₱0.00</span>
+            </div>
+            <div class="summary-item">
+                <p>Shipping Fee</p>
+                <span class="shipping-value" id="shipping">₱99.00</span>
+            </div>
 
-      <div class="cart-item">
-        <input type="checkbox" class="select-item" />
-        <img src="/" alt="V3 Shirt" />
-        <div class="item-info">
-          <h4>Sweat pants | Large</4>
-          <p>Light gray</p>
-        </div>
-        <div class="item-price">₱699</div>
-        <div class="quantity">
-          <button class="qty-btn decrease">−</button>
-          <span class="qty">1</span>
-          <button class="qty-btn increase">+</button>
-        </div>
-      </div>
+            <div class="voucher">
+                <input type="text" class="voucher-input" id="voucher" placeholder="Enter Voucher Code" />
+                <button class="apply-voucher" id="apply" disabled>APPLY</button> </div>
 
-      <div class="cart-item">
-        <input type="checkbox" class="select-item" />
-        <img src="/" alt="Quote Shirt" />
-        <div class="item-info">
-          <h4>Manila Exclusive "I ❤️ WHEN I REMEMBER WHO THE F*CK I AM"</h4>
-          <p>WHITE</p>
-        </div>
-        <div class="item-price">₱599</div>
-        <div class="quantity">
-          <button class="qty-btn decrease">−</button>
-          <span class="qty">1</span>
-          <button class="qty-btn increase">+</button>
-        </div>
-      </div>
-    </section>
+            <div class="summary-total">
+                <p>Total</p>
+                <span class="total-value" id="total">₱0.00</span>
+            </div>
 
-    <!-- SUMMARY PANEL -->
-    <aside class="summary-panel">
-      <h2>Order summary</h2>
-      <div class="summary-item">
-        <p>Subtotal (<span id="itemCount">0</span> items)</p>
-        <span id="subtotal">₱0.00</span>
-      </div>
-      <div class="summary-item">
-        <p>Shipping Fee</p>
-        <span id="shipping">₱99.00</span>
-      </div>
+            <button class="checkout-btn" id="checkoutBtn" disabled>PROCEED TO CHECKOUT</button> </aside>
+    </main>
 
-      <div class="voucher">
-        <input type="text" id="voucher" placeholder="Enter Voucher Code" />
-        <button id="apply">APPLY</button>
-      </div>
-
-      <div class="summary-total">
-        <p>Total</p>
-        <span id="total">₱0.00</span>
-      </div>
-
-      <!-- <button id="checkoutBtn">PROCEED TO CHECKOUT</button> -->
-      <button id="checkoutBtn">PROCEED TO CHECKOUT</button>
-    </aside>
-  </main>
-      <footer class="footer">
+        <footer class="footer">
         <div class="footer-section terms">
                <h3>Terms and Condition</h3>
                <p>By using this website, you agree to our terms, which include accurate use of our site and products, understanding that prices and availability may change without notice, that all purchases are subject to confirmation, that returns are accepted within 7 days if items are unworn and in original condition, that all content including designs and images belong to Manila Exclusive, and may not be copied or used without permission, and that we are not liable for any damages resulting from use of this site or our products.</p>
@@ -140,9 +82,7 @@
             <p>Email: <a href="#">ManilaExclusive@Gmail.com</p></a>
         </div>
     </footer>
-</body>
-<script src="indexCart.js"></script>
+
+    <script src="indexCart.js"></script>
+  </body>
 </html>
-
-
-

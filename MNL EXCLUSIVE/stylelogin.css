@@ -40,20 +40,22 @@ li a:hover::after {
   width: 100%;
 }
 h1 {
-    margin-left: 40px;
+    margin-left: 70px;
     padding: 3px;
     line-height: 0cm;
     font-weight: lighter;
     font-size: 30px;
     position: relative;
-    top: -30px;
+    top: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing: 5px;
 }
 .EX {
-    margin-left: 70px;
+    margin-left: 105px;
+    padding: 0;
 }
 header {
-    background-color: grey;
-    padding: 30px;
+    padding: 0px;
     width: 100%;
     z-index: 10;
     position: fixed;
