@@ -12,6 +12,15 @@ html {
   scroll-padding-top: 60px;
 }
 /* ===== MAIN HEADER ===== */
+.LOGO {
+  margin: 0;
+  padding: 0;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  left: 80px;
+  top: -30px;
+}
 nav ul {
     display: flex;
     text-decoration: none;
@@ -24,7 +33,7 @@ nav ul {
 li a {
     margin: 10px;
     color: rgb(0, 0, 0);
-    font-size: 15px;
+    font-size: 17px;
     position: relative;
     top: 20px;
     text-decoration: none;
@@ -87,6 +96,22 @@ ul {
   padding: 30px 40px 100px 40px;
   background-color: #f6f6f6;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  background: url(bbg.jpg) no-repeat center center/cover;
+}
+.cart-layout > * {
+  position: relative;
+  z-index: 1; /* make content visible above overlay */
+}
+.cart-layout::before {
+  content: "";
+  position: absolute;
+  top: 160px;
+  left: 0;
+  right: 0;
+  bottom: -500px;
+  background-color: rgba(0, 0, 0, 0.3); /* adjust opacity here */
+  backdrop-filter: blur(1px); /* optional: adds a soft blur */
+  z-index: 0;
 }
 .cart-section a {
   font-family: sans-serif;
@@ -94,9 +119,17 @@ ul {
 .cart-section p {
   font-family: sans-serif;
 }
+#cart-items-container {
+  max-height: 650px; /* adjust height as needed */
+  overflow-y: auto;  /* enables vertical scroll */
+  padding-right: 10px; /* optional: keeps content from touching scrollbar */
+}
 /* LEFT: CART SECTION */
 .cart-section {
   flex: 1;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid black;
 }
 
 .breadcrumb {
@@ -123,9 +156,6 @@ ul {
   border: 1px solid #bdbdbd;
   transition: 0.3s;
 }
-
-
-
 .cart-item input[type="checkbox"] {
   width: 20px;
   height: 20px;
@@ -195,12 +225,22 @@ ul {
   min-width: 15px;
   text-align: center;
 }
-
+.cart-section p {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  margin: 30px;
+}
+.cart-section {
+  padding: 10px;
+}
+.cart-image {
+  color: black;
+}
 /* RIGHT: ORDER SUMMARY */
 .summary-panel {
   width: 28%;
   background-color: #fff;
-  border: 1px solid #bdbdbd;
+  border: 1px solid #000000;
   padding: 18px 20px;
   border-radius: 5px;
   align-self: flex-start;

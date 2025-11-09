@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 itemElement.dataset.itemId = `${item.id}-${item.color}-${item.size}`;
                 
                 itemElement.innerHTML = `
-                    <input type="checkbox" class="select-item" checked>
+                    <input type="checkbox" class="select-item">
                     <img src="${item.imageUrl}" alt="${item.name}" class="item-thumbnail">
                     <div class="item-details">
                         <h4 class="item-name">${item.name}</h4>
