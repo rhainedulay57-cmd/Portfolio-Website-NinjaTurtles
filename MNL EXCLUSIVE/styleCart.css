@@ -12,15 +12,6 @@ html {
   scroll-padding-top: 60px;
 }
 /* ===== MAIN HEADER ===== */
-.LOGO {
-  margin: 0;
-  padding: 0;
-  height: 50px;
-  width: 50px;
-  position: relative;
-  left: 80px;
-  top: -30px;
-}
 nav ul {
     display: flex;
     text-decoration: none;
@@ -93,7 +84,7 @@ ul {
   display: flex;
   justify-content: space-between;
   gap: 25px;
-  padding: 30px 40px 100px 40px;
+  padding: 30px 40px 40px 40px;
   background-color: #f6f6f6;
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: url(bbg.jpg) no-repeat center center/cover;
@@ -105,12 +96,11 @@ ul {
 .cart-layout::before {
   content: "";
   position: absolute;
-  top: 160px;
+  top: 165px;
   left: 0;
   right: 0;
-  bottom: -500px;
-  background-color: rgba(0, 0, 0, 0.3); /* adjust opacity here */
-  backdrop-filter: blur(1px); /* optional: adds a soft blur */
+  bottom: 0;
+  backdrop-filter: blur(5px); /* optional: adds a soft blur */
   z-index: 0;
 }
 .cart-section a {
@@ -138,11 +128,11 @@ ul {
   margin-top: 60px;
   margin-bottom: 20px;
   font-size: 15px;
-  color: #444;
+  color: #000000;
   position: relative;
   left: 0px;
 }
-.breadcrumb b {
+.breadcrumb span {
   color: #f7b733;
 }
 

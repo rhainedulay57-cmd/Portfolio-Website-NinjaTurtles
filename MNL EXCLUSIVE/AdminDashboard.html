@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />>
+    <title>MNL Exclusive</title>
+</head>
+<body>
+    <div class="container">
+
+        <!-- aside section start -->
+         <aside>
+
+            <div class="top">
+
+                <div class="logoname">
+                    <h2>MNL
+                    <span class="exclusive">EXCLUSIVE</span></h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <span class="material-symbols-outlined">grid_view</span>
+                   <h3>Dashboard</h3>
+                </a>
+                <a href="Approval.html">
+                    <span class="material-symbols-outlined">person_outline</span>
+                   <h3>Orders</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">Insights</span>
+                   <h3>Analytics</h3>
+                </a>
+                <a href="adminmessage.html">
+                    <span class="material-symbols-outlined">mail_outline</span>
+                   <h3>Messages</h3>
+                   <span class="msg_count">4</span>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                   <h3>Products</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">report_gmailerrorred</span>
+                   <h3>Reports</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">settings</span>
+                   <h3>Settings</h3>
+                </a>
+                <a href="#">
+                    <span class="material-symbols-outlined">add</span>
+                   <h3>Add Product</h3>
+                </a>
+                <a href="#" id="logoutBtn"> 
+                    <span class="material-symbols-outlined">logout</span>
+                   <h3>Logout</h3>
+                </a>
+            </div>
+
+         </aside>
+        <!-- aside section end -->
+
+        <!-- main section start -->
+         <main>
+            <h1>Dashboard</h1>
+            <div class="date">
+                <input type="date">
+            </div>
+
+            <div class="insights">
+                <!-- START SELLING -->
+                 <div class="sales">
+                    <span class="material-symbols-outlined">trending_up</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Sales</h3>
+                            <h1>₱49,999</h1>
+                        </div>
+
+                        <div class="progress">
+                            <svg>
+                                <circle r="30" cy="40" cx="40"></circle>
+                            </svg>
+                            <div class="number">80%</div>
+                        </div>
+                    </div>
+                    <small>Last 24 hours</small>
+                 </div>
+                <!-- END SELLING -->
+
+                <!-- EXPENSES -->
+                 <div class="expenses">
+                    <span class="material-symbols-outlined">local_mall</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Expenses</h3>
+                            <h1>₱24,499</h1>
+                        </div>
+
+                        <div class="progress">
+                            <svg>
+                                <circle r="30" cy="40" cx="40"></circle>
+                            </svg>
+                            <div class="number">80%</div>
+                        </div>
+                    </div>
+                    <small>Last 24 hours</small>
+                 </div>
+                <!-- EXPENSES -->
+
+                <!-- INCOME -->
+                 <div class="income">
+                    <span class="material-symbols-outlined">stacked_line_chart</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Income</h3>
+                            <h1>₱25,500</h1>
+                        </div>
+
+                        <div class="progress">
+                            <svg>
+                                <circle r="30" cy="40" cx="40"></circle>
+                            </svg>
+                            <div class="number">80%</div>
+                        </div>
+                    </div>
+                    <small>Last 24 hours</small>
+                 </div>
+                <!-- INCOME -->
+            </div>
+            <!-- END SALES -->
+             <div class="recent-order">
+                <h1>Recent Order</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Item Quantity</th>
+                            <th>Payments</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Manila Interlude</td>
+                            <td>1</td>
+                            <td>Due</td>
+                            <td class="warning">Pending</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td>Let Em Know</td>
+                            <td>1</td>
+                            <td>Due</td>
+                            <td class="warning">Pending</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                        <tr>
+                            <td>Mesh Jersey 08</td>
+                            <td>1</td>
+                            <td>Due</td>
+                            <td class="warning">Pending</td>
+                            <td class="primary">Details</td>
+                        </tr>
+                         <tr>
+                            <td>Baggy Sweat Pants</td>
+                            <td>1</td>
+                            <td>Due</td>
+                            <td class="warning">Pending</td>
+                            <td class="primary">Details</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+             </div>
+         </main>
+        <!-- main section end -->
+
+        <!-- right section start -->
+        <div class="right">
+            <div class="top">
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p><b>ADMIN NAME</b></p>
+                        <p>Admin</p>
+                        <small class="text-muted"></small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="prufile.webp" alt="profile-photo">
+                    </div>
+                </div>
+            </div>
+            <!-- END TOP -->
+
+            <!-- START RECENT UPDATE -->
+             <div class="recent_updates">
+                <h2>Recent Update</h2>
+
+            <div class="updates">
+
+             <div class="update">
+                <div class="profile-photo">
+                    <img src="buyer1.jpg" alt="">
+                </div>
+                <div class="message">
+                    <p><b>Buyer </b> Received his order</p>
+                </div>
+             </div>
+
+                <div class="update">
+                <div class="profile-photo">
+                    <img src="buyer2.png" alt="">
+                </div>
+                <div class="message">
+                    <p><b>Buyer </b> Received his order</p>
+                </div>
+             </div>
+
+                <div class="update">
+                <div class="profile-photo">
+                    <img src="buyer3.jpg" alt="">
+                </div>
+                <div class="message">
+                    <p><b>Buyer </b> Received his order</p>
+                </div>
+             </div>
+             </div>
+            </div>
+        <!-- END RECENT UPDATE -->
+
+        <!-- START SALE ANALYTICS -->
+         <div class="sales_analytics">
+            <h2>Sales Analytics</h2>
+
+            <div class="item">
+                <div class="icon">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                </div>
+
+                <div class="right_text">
+                    <div class="info">
+                        <h3>Online Orders</h3>
+                        <small class="text-muted">Last seen 2 Hours</small>
+                    </div>
+                    <h5 class="danger">-17%</h5>
+                    <h3>3849</h3>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="icon">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                </div>
+
+                <div class="right_text">
+                    <div class="info">
+                        <h3>Online Orders</h3>
+                        <small class="text-muted">Last seen 2 Hours</small>
+                    </div>
+                    <h5 class="danger">+17%</h5>
+                    <h3>3849</h3>
+                </div>
+            </div>
+
+                <div class="item">
+                <div class="icon">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                </div>
+
+                <div class="right_text">
+                    <div class="info">
+                        <h3>Online Orders</h3>
+                        <small class="text-muted">Last seen 2 Hours</small>
+                    </div>
+                    <h5 class="danger">-17%</h5>
+                    <h3>3849</h3>
+                </div>
+            </div>
+
+         </div>
+        <!-- END SALE ANALYTICS -->
+        <div class="item add_products">
+            <div>
+                <span class="material-symbols-outlined">add</span>
+            </div>
+         </div>
+         </div>
+        <!-- right section end -->
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

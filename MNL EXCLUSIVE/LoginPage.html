@@ -54,10 +54,13 @@
     return;
     }
     // example login check (pwede mong palitan kung gusto mo)
-    if (email === "rhainedulay57@gmail.com" && password === "Mackmack") {
+    if (email === "user" && password === "User") {
     // kapag tama ang username at password, pupunta sa ibang HTML file
     alert("Login Successfully!");
     window.location.href = "HomePage.html";
+    } else if (email === "admin" && password === "Admin") {
+    alert("Welcome, Admin!");
+    window.location.href = "AdminDashboard.html";
     } else {
     alert("Invalid username or password!");
     }

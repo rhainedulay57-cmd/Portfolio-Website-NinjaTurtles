@@ -85,20 +85,34 @@ ul {
   gap: 25px;
   padding: 30px 40px 100px 40px;
   background-color: #f6f6f6;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(0, 0, 0);
+  background: url(bbg.jpg) no-repeat center center/cover;
 }
-
+.placeorder-layout > * {
+  position: relative;
+  z-index: 1; /* make content visible above overlay */
+}
+.placeorder-layout::before {
+  content: "";
+  position: absolute;
+  top: 165px;
+  left: 0;
+  right: 0;
+  bottom: -300px;
+  backdrop-filter: blur(5px); /* optional: adds a soft blur */
+  z-index: 0;
+}
 .breadcrumb {
   width: 100%;
   text-align: center;
   margin-top: 60px;
   margin-bottom: 20px;
   font-size: 15px;
-  color: #444;
+  color: #000000;
   position: relative;
   left: 0px;
 }
-.breadcrumb b {
+.breadcrumb span {
   color: #f7b733;
 }
 
@@ -107,8 +121,8 @@ ul {
   flex: 1;
   min-width: 300px;
   background: #fff;
-  border: 1px solid #ccc;
-  padding: 25px;
+  border: 1px solid #000000;
+  padding: 20px;
   border-radius: 5px;
 }
 
@@ -159,7 +173,7 @@ textarea {
 .summary-panel {
   width: 30%;
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   padding: 25px;
   border-radius: 5px;
   align-self: flex-start;
