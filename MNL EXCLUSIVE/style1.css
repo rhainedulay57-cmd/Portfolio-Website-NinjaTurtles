@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 body {
     margin: 0;
     background-size: cover;         
@@ -44,7 +46,7 @@ html {
   width: 50px;
   position: relative;
   left: 70px;
-  top: -30px;
+  top: -20px;
 }
 nav ul {
     display: flex;
@@ -58,12 +60,13 @@ nav ul {
 li a {
     margin: 10px;
     color: rgb(255, 255, 255);
-    font-size: 17px;
+    font-size: 1rem;
+    font-weight: 400;
     position: relative;
     top: 25px;
     text-decoration: none;
     transition: 300ms ease;
-    font-family: sans-serif;
+    font-family: 'Poppins',sans-serif;
     transition: color 0.3s ease;
 }
 li a::after {
@@ -130,10 +133,12 @@ ul {
     text-decoration: none;
     color: rgb(255, 255, 255);
     font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
     transition: color 0.3s ease;
 
     position: relative;
-    top: -60px;
+    top: -65px;
 }
 .nav-links {
     margin-top: 60px;
@@ -172,7 +177,7 @@ ul {
   top: 500px;
   left: 50px;
   padding: 5px;
-  border-radius: 10px;
+  font-family: 'Poppins';
 }
 .home-text p {
   color: white;
@@ -231,16 +236,16 @@ ul {
 #about p {
   background-color: var(--clr-white);
   padding: 20px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Poppins';
   border-radius: var(--border-radius-3);
   font-size: 17px;
   text-align: left;
   z-index: 1;
-  margin-bottom:40px;
+  margin-bottom:20px;
 }
 #about h2 {
   text-shadow: 2px 2px 4px black;
-  margin-top: 120px;
+  margin-top: 90px;
   color: rgb(255, 255, 255);
   font-size: 85px;
   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -260,7 +265,7 @@ ul {
   background-position: center;
   border-radius: 20px;
   padding: 20px;
-  margin: 25px;
+  margin: 40px 25px 25px 25px;
   height: 230px;
   display: flex;
   align-items: center;
@@ -315,24 +320,6 @@ ul {
   overflow: hidden;
   background-color: var(--clr-white);
 }
-#shirts::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  filter: blur(8px); /* adjust blur strength */
-  opacity: 0.5; /* controls transparency */
-  z-index: 1;
-  transform: scale(1.1); /* prevents edge clipping when blurred */
-}
-
-#shirts > * {
-  position: relative;
-  z-index: 1; /* ensures content stays sharp and visible */
-}
 #shirts .container {
   display: flex;
   flex-wrap: wrap;          
@@ -341,17 +328,17 @@ ul {
   gap: 50px;
 }
 .itemcard {
-  background: rgb(245, 245, 245);
+  background: rgb(255, 255, 255);
   padding: 24px;
-  border-radius: 16px;
+  border-radius: var(--card-border-radius);
   border: 1px solid black;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  max-width: 250px;
+  max-width: 300px;
   text-align: center;
-  margin: 80px 80px;
+  margin: 70px 60px;
+  font-family: 'Poppins';
 }
 .color-option, .size-option {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 .colors {
   display: flex;
@@ -366,7 +353,7 @@ ul {
   cursor: pointer;
 }
 .color.selected {
-  border: 3px solid black;
+  border: 2px solid black;
 }
 .sizes {
   display: flex;
@@ -406,17 +393,22 @@ ul {
 .add-to-cart-btn {
   width: 80%;
   padding: 12px;
-  background: black;
-  color: white;
+  background: var(--clr-dark-variant);
+  color: var(--clr-white);
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1rem;
+  font-family: 'Poppins';
+  transition: all .3s;
+}
+.add-to-cart-btn:hover {
+  background-color: var(--clr-primary);
 }
 .item-image {
-  height: 200px;
-  width: 200px;
-  border-radius: 20px;
+  height: 250px;
+  width: 250px;
+  border-radius: var(--card-border-radius);
 }
 /* FOOTER TERMS */
 .footer {
@@ -436,11 +428,12 @@ ul {
 }
 
 .footer-section h3 {
-  color: #f7b733;
+  color: var(--clr-info-dark);
   margin-bottom: 10px;
   position: relative;
   top: 0px;
   margin-left: 10px;
+  font-family: sans-serif;
 }
 
 .footer-section p {
@@ -455,7 +448,7 @@ ul {
   transition: color 0.3s;
 }
 .footer-section a:hover {
-  color: #f7b733;
+  color: var(--clr-primary);
 }
 .footer-section.Help a {
   display: block;          
@@ -473,7 +466,7 @@ ul {
   left: 80px;
 }
 .footer-section.Help a:hover {
-  color: #f7b733;
+  color: var(--clr-primary);
 }
 .footer-section.Follow p {
   width: 140px;

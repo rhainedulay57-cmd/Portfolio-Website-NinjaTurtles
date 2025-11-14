@@ -35,7 +35,11 @@
         <div class="payment-details" id="gcashDetails" style="display: none;">
           <p>Send payment to: <b>0999-123-4567</b></p>
           <p>Account Name: <b>MNL Exclusives</b></p>
-          <input type="file">
+          <div class="file-upload">
+          <label for="fileInput">Upload Image</label>
+          <input type="file" id="fileInput">
+          <span id="fileName">No file chosen</span>
+        </div>
         </div>
 
         <div class="payment-details" id="cardDetails" style="display: none;">
@@ -65,7 +69,7 @@
         <p>Total</p>
         <span id="total">₱0.00</span>
       </div>
-      <button class="back-btn">← Back to Order</button>
+      <button class="back-btn">←   Back to Order</button>
     </aside>
   </main>
 

@@ -14,10 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   totalEl.textContent = `₱${total.toFixed(2)}`;
 
   // Show/hide payment details
-  form.addEventListener("change", (e) => {
-    const method = e.target.value;
-    document.getElementById("gcashDetails").style.display = method === "gcash" ? "block" : "none";
-    document.getElementById("cardDetails").style.display = method === "card" ? "block" : "none";
+form.addEventListener("change", (e) => {
+  if (e.target.name === "payment") {
+      const method = e.target.value;
+      document.getElementById("gcashDetails").style.display = method === "gcash" ? "block" : "none";
+      document.getElementById("cardDetails").style.display = method === "card" ? "block" : "none";
+  }
   });
 
   // Confirm payment
@@ -33,4 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
   backBtn.addEventListener("click", () => {
     window.location.href = "indexPlaceOrder.html";
   });
+
+  const fileInput = document.getElementById("fileInput");
+  const fileName = document.getElementById("fileName");
+
+  fileInput.addEventListener("change", () => {
+    fileName.textContent = fileInput.files.length > 0 
+      ? fileInput.files[0].name 
+      : "No file chosen";
+  });
 });
+
+
+
