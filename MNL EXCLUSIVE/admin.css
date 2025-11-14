@@ -355,6 +355,7 @@ main .recent-order a {
     margin: 1rem;
 }
 
+
 /* START RIGHT SIDE SECTION */
 
 .right {
@@ -520,6 +521,7 @@ aside .top div.close {
 .orders-table th {
   padding: 1rem;
   background: var(--clr-light);
+  color: var(--clr-dark);
   text-transform: uppercase;
   font-weight: 600;
 }
