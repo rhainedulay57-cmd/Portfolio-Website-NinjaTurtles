@@ -3,18 +3,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     const findEl = (selClass, selId) => document.querySelector(selClass) || document.getElementById(selId);
 
-    const cartItemsContainer = findEl("#cart-items-container"); // Changed to ID selector
+    const cartItemsContainer = findEl("#cart-items-container"); 
     const subtotalEl = findEl(".subtotal-value", "subtotal");
     const shippingEl = findEl(".shipping-value", "shipping");
     const totalEl = findEl(".total-value", "total");
-    const discountEl = findEl(".discount-value", "discount"); // Now exists in HTML
+    const discountEl = findEl(".discount-value", "discount");
     const voucherInput = findEl(".voucher-input", "voucher");
     const applyVoucherBtn = findEl(".apply-voucher", "apply");
     const checkoutBtn = findEl(".checkout-btn", "checkoutBtn");
     const itemCountEl = document.getElementById("itemCount");
 
-    let discount = 0; // percentage discount (e.g., 0.1 for 10%)
-    let fixedDiscountAmount = 0; // For fixed amount discounts like ₱50
+    let discount = 0;
+    let fixedDiscountAmount = 0;
 
     function getCartItemElements() {
         return Array.from(document.querySelectorAll(".cart-item"));
@@ -29,13 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function displayCartItems() {
         const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        cartItemsContainer.innerHTML = ''; // Clear existing items
+        cartItemsContainer.innerHTML = '';
 
         if (storedCartItems.length === 0) {
             cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty. <a href="HomePage.html#new">Start shopping!</a></p>';
             if (checkoutBtn) checkoutBtn.setAttribute('disabled', 'disabled');
             if (applyVoucherBtn) applyVoucherBtn.setAttribute('disabled', 'disabled');
-            // Ensure discount is reset if cart becomes empty
             discount = 0;
             fixedDiscountAmount = 0;
             if (voucherInput) delete voucherInput.dataset.fixedDiscount;
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('cart-item');
                 itemElement.dataset.itemId = `${item.id}-${item.color}-${item.size}`;
-                
+
                 itemElement.innerHTML = `
                     <input type="checkbox" class="select-item">
                     <img src="${item.imageUrl}" alt="${item.name}" class="item-thumbnail">
@@ -96,17 +95,15 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (discount > 0) {
             currentDiscountValue = rawSubtotal * discount;
         }
-        
+
         const discountedSubtotal = Math.max(0, rawSubtotal - currentDiscountValue);
-
         const shippingFee = rawSubtotal > 0 ? 99 : 0;
-
         const total = discountedSubtotal + shippingFee;
 
         if (subtotalEl) subtotalEl.textContent = `₱${discountedSubtotal.toFixed(2)}`;
         if (shippingEl) shippingEl.textContent = `₱${shippingFee.toFixed(2)}`;
         if (totalEl) totalEl.textContent = `₱${total.toFixed(2)}`;
-        if (discountEl) discountEl.textContent = `-₱${currentDiscountValue.toFixed(2)}`; // Display discount
+        if (discountEl) discountEl.textContent = `-₱${currentDiscountValue.toFixed(2)}`;
         if (itemCountEl) itemCountEl.textContent = qtyCount;
 
         localStorage.setItem("cartSubtotal", discountedSubtotal.toFixed(2));
@@ -129,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             qtyEl.textContent = qty;
             itemEl.querySelector(".decrease").disabled = (qty <= 1);
-            
+
             const itemId = itemEl.dataset.itemId;
             let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
             const itemIndex = cartItems.findIndex(item => `${item.id}-${item.color}-${item.size}` === itemId);
@@ -151,7 +148,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
                 itemEl.remove();
-                displayCartItems(); // Re-render and recalculate
+                displayCartItems();
             }, 260);
         }
     });
@@ -177,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (code === "MNL10") {
                 discount = 0.10;
                 fixedDiscountAmount = 0;
-                if (voucherInput) delete voucherInput.dataset.fixedDiscount;
                 alert("Voucher applied: 10% off ✅");
             } else if (code === "MNL50") {
                 discount = 0;
@@ -187,13 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 discount = 0;
                 fixedDiscountAmount = 0;
-                if (voucherInput) delete voucherInput.dataset.fixedDiscount;
                 alert("Invalid voucher code ❌");
             }
             calculateTotals();
         });
     }
 
+    // CHECKOUT — SAVE SELECTED ITEMS HERE
     if (checkoutBtn) {
         checkoutBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -201,17 +197,45 @@ document.addEventListener("DOMContentLoaded", () => {
             const totalNum = parsePrice(totalEl?.textContent || "0");
             const subtotalNum = parsePrice(subtotalEl?.textContent || "0");
             const itemCountNum = parseInt(itemCountEl?.textContent || "0", 10);
+        // --- SAVE SELECTED CART DATA FOR NEXT PAGES ---
+            const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+        // TAKE ONLY FIRST SELECTED ITEM
+            const selectedItem = storedCartItems[0];
+
+        if (selectedItem) {
+            localStorage.setItem("orderItem", selectedItem.name);
+            localStorage.setItem("orderQuantity", selectedItem.quantity);
+        }
 
             if (itemCountNum <= 0) {
                 alert("Please select at least one item before checking out.");
                 return;
             }
 
+            // --- SAVE ALL SELECTED CART ITEMS ---
+            const selectedItems = [];
+
+            document.querySelectorAll(".cart-item").forEach(itemEl => {
+                const checkbox = itemEl.querySelector(".select-item");
+
+                if (checkbox && checkbox.checked) {
+                    selectedItems.push({
+                        name: itemEl.querySelector(".item-name").textContent,
+                        color: itemEl.querySelector(".item-variant").textContent,
+                        price: parsePrice(itemEl.querySelector(".item-price").textContent),
+                        quantity: parseInt(itemEl.querySelector(".qty").textContent)
+                    });
+                }
+            });
+
+            localStorage.setItem("orderItems", JSON.stringify(selectedItems));
+
+            // Save totals
             localStorage.setItem("cartSubtotal", subtotalNum.toFixed(2));
             localStorage.setItem("cartItemCount", itemCountNum);
             localStorage.setItem("cartTotal", totalNum.toFixed(2));
 
-            alert(`Proceeding to checkout - Total: ₱${totalNum.toFixed(2)}`);
             window.location.href = "indexPlaceOrder.html";
         });
     }

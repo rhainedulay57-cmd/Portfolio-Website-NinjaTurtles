@@ -110,7 +110,6 @@ aside .top {
     justify-content: space-around;
     align-items: center;
     margin-top: 4rem;
-    border-radius: var(--border-radius-1);
 }
 aside .logoname {
     display: flex;
@@ -133,7 +132,6 @@ aside .sidebar {
     height: 30vh;
     position: relative;
     top: 1rem;
-    border-radius: var(--border-radius-2);
 }
 aside h3 {
     font-weight: 600;
@@ -152,7 +150,7 @@ aside .sidebar a.active {
     background: rgb(50, 50, 50);
     color: var(--clr-info-dark);
     margin-left: 0;
-    border-left: 6px solid black;
+    border-left: 10px solid black;
 }
 aside .sidebar a.active:before {
     content: '';

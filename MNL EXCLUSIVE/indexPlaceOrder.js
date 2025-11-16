@@ -9,21 +9,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const count = localStorage.getItem("cartItemCount") || 0;
   orderTitleEl.textContent = `ORDER SUMMARY | ${count} ITEM(S)`;
 
-  // Load subtotal from previous page (cart)
- const savedSubtotal = localStorage.getItem("cartSubtotal");
- const subtotal = savedSubtotal ? parseFloat(savedSubtotal) : 0;
-  // Shipping fee
-  const shipping = subtotal > 0 ? 99 : 0; // pwede mong baguhin kung gusto mo exact 99
+  // Load subtotal
+  const savedSubtotal = localStorage.getItem("cartSubtotal");
+  const subtotal = savedSubtotal ? parseFloat(savedSubtotal) : 0;
 
-  // Compute correct total
+  // Compute shipping fee
+  const shipping = subtotal > 0 ? 99 : 0;
+
+  // Total
   const total = subtotal + shipping;
 
-  // Display values
+  // Display numeric totals
   itemSubtotalEl.textContent = `₱${subtotal.toFixed(2)}`;
   shippingEl.textContent = `₱${shipping.toFixed(2)}`;
-  totalEl.textContent = `₱${total.toFixed(2)}`; 
+  totalEl.textContent = `₱${total.toFixed(2)}`;
 
-  // Handle form submission
+  // --------------------------
+  // 🔥 DISPLAY SELECTED ITEMS
+  // --------------------------
+  const selectedItems = JSON.parse(localStorage.getItem("orderItems")) || [];
+  const summaryContainer = document.getElementById("orderSummaryItems");
+
+  if (summaryContainer) {
+    summaryContainer.innerHTML = "";
+
+    if (selectedItems.length === 0) {
+      summaryContainer.innerHTML = "<p>No selected item.</p>";
+    } else {
+      selectedItems.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "summary-item";
+
+        div.innerHTML = `
+          <p><b>${item.name}</b></p>
+          <p>${item.color}</p>
+          <p>Qty: ${item.quantity}</p>
+          <p>₱${item.price.toFixed(2)}</p>
+        `;
+
+        summaryContainer.appendChild(div);
+      });
+    }
+  }
+
+  // --------------------------
+  //  FORM SUBMIT (SAVE ALL DATA)
+  // --------------------------
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -37,8 +68,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // Save to localStorage for next page
-    localStorage.setItem("shippingInfo", JSON.stringify({ name, phone, address, postal, total }));
+    // SAVE EVERYTHING FOR PAY + FINAL PAGE
+    const shippingInfo = {
+      name,
+      phone,
+      address,
+      postal,
+      total,
+      items: selectedItems   // <-- IMPORTANT: Added this!
+    };
+
+    localStorage.setItem("shippingInfo", JSON.stringify(shippingInfo));
+
     alert("Proceeding to payment...");
     window.location.href = "indexPay.html";
   });
