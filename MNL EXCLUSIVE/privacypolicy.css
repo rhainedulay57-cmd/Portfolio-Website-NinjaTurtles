@@ -41,7 +41,7 @@ body {
     font-size: 0.88rem;
     user-select: none;
     overflow-x: hidden ;
-    background: linear-gradient(to right,var(--clr-dark),var(--clr-dark-variant));
+    background: white;
 }
 .main-content {
     display: grid;
@@ -62,7 +62,7 @@ nav ul {
 }
 li a {
     margin: 10px;
-    color: rgb(255, 255, 255);
+    color: black;
     font-size: 1rem;
     font-weight: 400;
     position: relative;
@@ -77,7 +77,7 @@ li a::after {
   position: absolute;
   width: 0%;
   height: 2px;
-  background: #ffffff;
+  background: #000000;
   left: 0;
   bottom: -6px;
   transition: 300ms ease;
@@ -105,11 +105,12 @@ aside {
     height: 100vh;
 }
 aside .top {
-    background-color: #202528;
+    border: 1px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 4rem;
+    border-radius: var(--border-radius-1);
 }
 aside .logoname {
     display: flex;
@@ -118,7 +119,7 @@ aside .logoname {
 }
 .H2BOI {
     font-size: 1.3rem;
-    color: white;
+    color: black;
 }
 aside .logoname span {
     color: gray;
@@ -126,12 +127,13 @@ aside .logoname span {
 /* SIDEBAR */
 
 aside .sidebar {
-    background-color: #202528;
+    border: 1px solid black;
     display: flex;
     flex-direction: column;
     height: 30vh;
     position: relative;
     top: 1rem;
+    border-radius: var(--border-radius-2);
 }
 aside h3 {
     font-weight: 600;
@@ -139,7 +141,7 @@ aside h3 {
 }
 aside .sidebar a {
     display: flex;
-    color: var(--clr-info-dark);
+    color: black;
     margin-left: 2rem;
     gap: 1rem;
     align-items: center;
@@ -147,39 +149,39 @@ aside .sidebar a {
     transition: all .1s ease-in;
 }
 aside .sidebar a.active {
-    background: var(--clr-light);
-    color: var(--clr-primary);
+    background: rgb(50, 50, 50);
+    color: var(--clr-info-dark);
     margin-left: 0;
-    border-left: 5px solid var(--clr-primary);
+    border-left: 6px solid black;
 }
 aside .sidebar a.active:before {
     content: '';
     width: 6px;
     height: 100%;
-    background-color: var(--clr-primary);
+    background-color: rgb(50, 50, 50);
 }
 aside .sidebar h3:hover {
     margin-left: 1rem;
     transition: .4s ease;
-    color: var(--clr-primary);
+    color: gray;
 }
 /* MAIN CONTENT */
 main {
-    margin-top: 0.5rem;
+    margin-top: -0.8rem;
     width: auto;
 }
 
 main h1 {
-    color: white;
-    font-size: 3rem;
+    color: black;
+    font-size: 5rem;
 }
 
 .content-section {
     font-family: 'Poppins';
-    background: var(--clr-white);
+    border: 1px solid black;
     color: white;
     padding: 40px;
-    border-radius: var(--card-border-radius);
+    border-radius: 12px;
     box-shadow: var(--box-shadow);
     transition: all .3s ease;
     margin: 0 auto;
@@ -192,13 +194,13 @@ main h1 {
 .effective-date {
     font-weight: 600;
     margin-bottom: 30px;
-    color: white;
+    color: black;
 }
 
 p {
     line-height: 1.8;
     margin-bottom: 20px;
-    color: white;
+    color: #555;
 }
 
 .contact {
@@ -206,7 +208,7 @@ p {
 }
 
 .contact a {
-    color: var(--clr-dark-variant);
+    color: black;
     transition: 300ms ease;
     text-decoration: none;
     margin-left: 1rem;
@@ -214,7 +216,7 @@ p {
 
 .contact a:hover {
     text-decoration: none;
-    color: var(--clr-primary)
+    color: gray;
 }
 
 .rights a {
@@ -229,18 +231,18 @@ p {
     color: var(--clr-primary)
 }
 
-.section-title {
+main .section-title {
     font-weight: 600;
     margin-top: 30px;
     margin-bottom: 15px;
-    color: var(--clr-dark-variant);
+    color: var(--clr-dark); 
 }
 
 main .content-section h2 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
-    color: var(--clr-dark-variant);
+    color: black;
 }
 
 .subsection-title {
@@ -248,7 +250,7 @@ main .content-section h2 {
     font-weight: 600;
     margin-top: 25px;
     margin-bottom: 12px;
-    color: var(--clr-dark-variant);
+    color: #666;
 }
 /* FOOTER TERMS */
 .footer {
