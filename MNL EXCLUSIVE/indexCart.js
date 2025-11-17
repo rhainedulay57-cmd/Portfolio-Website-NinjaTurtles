@@ -172,14 +172,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (code === "MNL10") {
-                discount = 0.10;
-                fixedDiscountAmount = 0;
-                alert("Voucher applied: 10% off ✅");
+                discount = 0;
+                fixedDiscountAmount = 10;
+                alert("Voucher applied: ₱10 off ✅");
             } else if (code === "MNL50") {
                 discount = 0;
                 fixedDiscountAmount = 50;
                 voucherInput.dataset.fixedDiscount = "50";
                 alert("Voucher applied: ₱50 off ✅");
+            } else if (code === "EXCLUSIVE") {
+                discount = 0;
+                fixidDiscountAmount = 100;
+                voucherInput.dataset.fixedDiscount = "100";
+                alert("Voucher applied: ₱100 off ✅");
+            } else if (code === "MNLOFF") {
+                discount = 0.10;
+                fixedDiscountAmount = 0;
+                alert("Voucher applied: 10% off ✅");
             } else {
                 discount = 0;
                 fixedDiscountAmount = 0;
