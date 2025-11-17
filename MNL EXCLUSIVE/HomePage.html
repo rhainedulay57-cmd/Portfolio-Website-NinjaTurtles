@@ -19,7 +19,7 @@
         <li><a href="#about">About Us</a></li>
         <li><a href="indexCart.html" class="cart-icon-link"><i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-quantity-indicator">0</span></a></li>
-        <li><a href="LoginPage.html"><i class="fa-regular fa-circle-user"></i></a></li>
+        <li><a href="#" id="profileIcon"><i class="fa-regular fa-circle-user"></i></a></li>
     </ul>
   </nav>
         <nav class="nav-links">
@@ -444,6 +444,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
     <footer class="footer">
         <div class="footer-section terms">
                <h3>Terms and Condition</h3>
@@ -456,12 +457,12 @@
             <a href="faq.html">FAQ</a>
             <a href="privacypolicy.html">Privacy Policy</a>
             <a href="return.html">Return Policy</a>
-            <a href="#">Bulk Order</a>
+            <a href="bulkorder.html">Bulk Order</a>
         </div>
 
         <div class="footer-section Follow">
           <h3>Follow Us</h3>
-          <p>Tiktok : <a href="https://www.tiktok.com/@manilaexclusives2">manilaexclusive2</a></p>
+          <p>Tiktok : <a href="https://www.tiktok.com/@manilaexclusives2">manilaexclusives2</a></p>
         </div>
 
         <div class="footer-section Contact">
@@ -470,6 +471,34 @@
             <p>Email: <a href="#">manilaexclusive@gmail.com</p></a>
         </div>
     </footer>
+<script>
+// Check login status when clicking profile icon
+const profileIcon = document.getElementById("profileIcon");
+
+profileIcon.addEventListener("click", (e) => {
+    e.preventDefault(); // para hindi mag refresh
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userRole = localStorage.getItem("userRole");
+
+    if (isLoggedIn === "true") {
+
+        // If admin → go to admin panel
+        if (userRole === "admin") {
+            window.location.href = "AdminDashboard.html";
+        } 
+
+        // If user → go to profile page
+        else {
+            window.location.href = "profile.html";
+        }
+        
+    } else {
+        // not logged in → go to login page
+        window.location.href = "LoginPage.html";
+    }
+});
+</script>
 
 </body>
 </html>

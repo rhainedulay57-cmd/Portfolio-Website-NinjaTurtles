@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: white;
+}
+
+/* Profile container and sidebar */
+.profile-container {
+    display: flex;
+    flex: 1; /* pushes footer down */
+    margin-bottom: 210px;
+}
+
+.details-grid {
+    border: 1px solid black;
+    padding: 25px;
+    border-radius: 10px;
+    background: white;
+    margin-bottom: 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: #fff;
+    padding: 25px;
+    border-right: 1px solid #ddd;
+}
+
+/* User Info */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+    gap: 10px; 
+}
+.user-info .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid #f0f0f0;
+    object-fit: cover; 
+}
+
+.user-info h2 {
+    margin: 15px 0 5px;
+    font-size: 20px; 
+}
+
+.user-info p {
+    font-size: 13px;
+    color: #666; 
+}
+
+/* Sidebar menu */
+.menu a {
+    display: block;
+    padding: 10px 0;
+    color: #444;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s; 
+}
+.menu a:hover,
+.menu a.active {
+    background: #4f46e5;
+    color: #fff;
+    padding-left: 10px; 
+}
+
+/* Main content */
+.content { flex: 1; padding: 30px; }
+
+/* Cards */
+.card { 
+    background: rgb(143, 77, 77);
+}
+.card h3 { margin-bottom: 15px; font-size: 18px; }
+
+/* Orders table */
+.order-table {
+    width: 100%; 
+    border-collapse: collapse;
+}
+.order-table th, .order-table td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; font-size: 14px; }
+.status { padding: 5px 10px; border-radius: 20px; font-size: 12px; color: #fff; }
+.status.pending { background: orange; }
+.status.shipped { background: #3b82f6; }
+.status.delivered { background: #22c55e; }
+
+/* Ratings */
+.rating-item img { width: 200px; height: auto; border-radius: 6px; object-fit: cover; margin-bottom: 20px; display: block; }
+
+/* FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background-color: #000;
+    color: white;
+    padding: 40px 60px;
+    gap: 20px; /* space between columns */
+}
+
+.footer-section {
+    flex: 1; /* each section takes equal space */
+    min-width: 200px; /* prevents too narrow columns */
+    display: flex;
+    flex-direction: column; /* stack items vertically */
+}
+
+.footer-section h3 {
+    color: var(--clr-info-dark);
+    margin-bottom: 10px;
+    font-family: sans-serif;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: var(--clr-primary);
+}
+
+/* Optional: adjust links for Help section */
+.footer-section.Help a {
+    margin: 5px 10;
+}
+
+/* Make footer responsive */
+@media (max-width: 800px) {
+    .footer {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .footer-section {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.status {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    color: white;
+    pointer-events: none;  /* ❗ ALL STATUSES DISABLED */
+    cursor: default;
+}
+
+/* Colors */
+.status.shipped {
+    background-color: #007bff; /* blue */
+}
+
+.status.delivered {
+    background-color: #ff9800; /* orange */
+}
+
+.status.order-completed {
+    background-color: #28a745; /* green */
+}
+

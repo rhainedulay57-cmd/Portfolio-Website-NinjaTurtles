@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css" />
+</head>
+<body>
+<div class="profile-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="user-info">
+            <img src="wonwoo.jpg" class="avatar" alt="User">
+            <h2>Jhon Jeric Lariosa</h2>
+            <p>Member since 2025</p>
+        </div>
+
+        <nav class="menu">
+            <a href="#" data-target="profile-section" class="active">Profile Overview</a>
+            <a href="#" data-target="toship-section">To Ship</a>
+            <a href="#" data-target="toreceive-section">To Receive</a>
+            <a href="#" data-target="rates-section">Rates</a>
+            <a href="#" data-target="logout-section">Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+
+        <!-- Profile Overview -->
+        <section class="card" id="profile-section">
+
+            <div class="details-grid">
+                <h3>Profile Details</h3>
+                <div><strong>Name:</strong> Jhon Jeric Lariosa</div>
+                <div><strong>Email:</strong> jhonjericlariosa700@gmail.com</div>
+                <div><strong>Phone:</strong> +63 945 311 4523</div>
+                <div><strong>Location:</strong> Manila, Philippines</div>
+            </div>
+
+            <div class="details-grid">
+                
+                <table class="order-table">
+                    <h3>Recent Orders 📦</h3>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Total</th>
+                    </tr>
+                
+                    <tr>
+                        <td>MNL Exclusives Mesh Jersey 27</td>
+                        <td>Nov 18, 2025</td>
+                        <td><span class="status order-completed">Order Completed</span></td>
+                        <td>₱499.00</td>
+                    </tr>
+                    <tr>
+                        <td>MNL Exclusives Mesh Jersey 27</td>
+                        <td>Nov 18, 2025</td>
+                        <td><span class="status order-completed">Order Completed</span></td>
+                        <td>₱499.00</td>
+                    </tr>
+                    <tr>
+                        <td>MNL Exclusives Mesh Jersey 08</td>
+                        <td>Nov 18, 2025</td>
+                        <td><span class="status order-completed">Order Completed</span></td>
+                        <td>₱499.00</td>
+                    </tr>
+                     <tr>
+                        <td>Baggy Sweat Pants</td>
+                        <td>Nov 18, 2025</td>
+                        <td><span class="status order-completed">Order Completed</span></td>
+                        <td>₱699.00</td>
+                    </tr>
+                     <tr>
+                        <td>Manila's Interlude</td>
+                        <td>Nov 18, 2025</td>
+                        <td><span class="status order-completed">Order Completed</span></td>
+                        <td>₱399.00</td>
+                    </tr>
+                </table>
+
+            </div>        
+
+                <div class="Voucher"> 
+                    <h3>Voucher Code</h3>
+                    <p>DISCOUNT10</p>
+                    <p>MNL10</p>
+                    <p>EXLUSIVE</p>
+                    <p>MANILA EXCLUSIVE</p>
+                    <p>HAPPY15THMNL</p>
+                    <p>10%OFF</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- To Ship Orders -->
+        <section class="card" id="toship-section" style="display:none;">
+            <h3>Recent Orders</h3>
+            <table class="order-table">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Manila Exclusive Stay Exclusives</td>
+                    <td>Nov 17, 2025</td>
+                    <td><span class="status shipped">Shipped</span></td>
+                    <td>₱399.00</td>
+                </tr>
+                <tr>
+                    <td>MNL Exclusives Mesh Jersey 27</td>
+                    <td>Nov 17, 2025</td>
+                    <td><span class="status shipped">Shipped</span></td>
+                    <td>₱499.00</td>
+                </tr>
+                <tr>
+                    <td>Manila's Interlude</td>
+                    <td>Nov 17, 2025</td>
+                    <td><span class="status shipped">Shipped</span></td>
+                    <td>₱399.00</td>
+                </tr>
+                <tr>
+                    <td>Let em know</td>
+                    <td>Nov 17, 2025</td>
+                    <td><span class="status shipped">Shipped</span></td>
+                    <td>₱351.12</td>
+                </tr>
+                <tr>
+                    <td>M.E Slim fit</td>
+                    <td>Nov 17, 2025</td>
+                    <td><span class="status shipped">Shipped</span></td>
+                    <td>₱529.00</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- To Receive Orders -->
+        <section class="card" id="toreceive-section" style="display:none;">
+            <h3>Orders are out for delivery.🚚</h3>
+            <p>Your order has arrived.</p>
+
+            <table class="order-table">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Manila Exclusive Stay Exclusives</td>
+                    <td>Nov 19, 2025</td>
+                    <td><span class="status delivered">Delivered</span></td>
+                    <td>₱399.00</td>
+                </tr>
+                <tr>
+                    <td>MNL Exclusives Mesh Jersey 27</td>
+                    <td>Nov 19, 2025</td>
+                    <td><span class="status delivered">Delivered</span></td>
+                    <td>₱499.00</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- Rates Section -->
+        <section class="card" id="rates-section" style="display:none;">
+            <h3>Your Ratings</h3>
+            <div class="rating-item">
+                <p><strong>Customer Name</strong></p>
+                <p>J**** ***** *******</p>
+                <p><strong>Comments</strong></p>
+                <p>"Very comfortable and high quality!"</p>
+                <p>⭐ ⭐ ⭐ ⭐ ⭐</p>
+                <img src="rate.jpg">
+            </div>
+            <hr>
+            <div class="rating-item">
+                <p><strong>Customer Name</strong></p>
+                <p>J**** ***** *******</p>
+                <p><strong>Comments</strong></p>
+                <p>"Nice fit and material."</p>
+                <p>⭐ ⭐ ⭐ ⭐</p>
+                <img src="rating2.jpg">
+            </div>
+        </section>
+
+        <!-- Logout Section -->
+        <section class="card" id="logout-section" style="display:none;">
+            <h3>Orders are out for delivery.🚚</h3>
+            <p>Your order has arrived.</p>
+
+            <table class="order-table">
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Manila Exclusive Stay Exclusives</td>
+                    <td>Nov 19, 2025</td>
+                    <td><span class="status delivered">Delivered</span></td>
+                    <td>₱399.00</td>
+                </tr>
+                <tr>
+                    <td>MNL Exclusives Mesh Jersey 27</td>
+                    <td>Nov 19, 2025</td>
+                    <td><span class="status delivered">Delivered</span></td>
+                    <td>₱499.00</td>
+                </tr>
+            </table>
+        </section>
+
+    </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-section terms">
+        <h3>Terms and Condition</h3>
+        <p>By using this website, you agree to our terms...</p>
+    </div>
+
+    <div class="footer-section Help">
+        <h3>Help</h3>
+        <a href="#">My Account</a>
+        <a href="faq.html">FAQ</a>
+        <a href="privacypolicy.html">Privacy Policy</a>
+        <a href="return.html">Return Policy</a>
+        <a href="#">Bulk Order</a>
+    </div>
+
+    <div class="footer-section Follow">
+        <h3>Follow Us</h3>
+        <p>Tiktok : <a href="https://www.tiktok.com/@manilaexclusives2">manilaexclusive2</a></p>
+    </div>
+
+    <div class="footer-section Contact">
+        <h3>Contact Us</h3>
+        <p>J.P. Rizal Extension...</p>
+        <p>Email: <a href="#">manilaexclusive@gmail.com</a></p>
+    </div>
+</footer>
+
+<script src="profile.js"></script>
+</body>
+</html>
