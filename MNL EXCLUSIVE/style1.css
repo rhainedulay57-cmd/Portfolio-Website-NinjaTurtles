@@ -415,6 +415,34 @@ ul {
   width: 250px;
   border-radius: var(--card-border-radius);
 }
+.video-section {
+    position: relative;
+    height: 130vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+#pants {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(to top,var(--clr-color-background),var(--clr-dark-variant));
+}
+#pants .container {
+  display: flex;
+  flex-wrap: wrap;          
+  justify-content: center;                 
+  gap: 50px;
+}
 /* FOOTER TERMS */
 .footer {
   display: flex;

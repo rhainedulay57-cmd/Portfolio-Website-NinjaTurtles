@@ -183,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (code === "EXCLUSIVE") {
                 discount = 0;
                 fixidDiscountAmount = 100;
-                voucherInput.dataset.fixedDiscount = "100";
                 alert("Voucher applied: ₱100 off ✅");
             } else if (code === "MNLOFF") {
                 discount = 0.10;
@@ -247,6 +246,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             window.location.href = "indexPlaceOrder.html";
         });
+        document.getElementById("profileBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Check kung may account na naka-login
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        window.location.href = "Profile.html"; 
+    } else {
+        window.location.href = "LoginPage.html";
+    }
+});
     }
 
     displayCartItems();

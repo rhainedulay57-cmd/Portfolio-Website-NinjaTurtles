@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   // --- GET SHIPPING INFO ---
   const info = JSON.parse(localStorage.getItem("shippingInfo")) || {};
 
@@ -36,21 +37,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   localStorage.setItem("allOrders", JSON.stringify(orders));
 
+
   // --- CLEAR CART & DATA + GO HOME ---
- document.querySelector(".home-btn").addEventListener("click", () => {
+  document.querySelector(".home-btn").addEventListener("click", () => {
+    localStorage.removeItem("shippingInfo");
+    localStorage.removeItem("paymentMethod");
+    localStorage.removeItem("orderItem");
+    localStorage.removeItem("orderQuantity");
+    localStorage.removeItem("orderPrice");
 
-localStorage.removeItem("shippingInfo");
-localStorage.removeItem("paymentMethod");
-localStorage.removeItem("orderItem");
-localStorage.removeItem("orderQuantity");
-localStorage.removeItem("orderPrice");
-
-localStorage.removeItem("cartItems");      // << WALANG ITO KAYA DI NALILINIS
-localStorage.removeItem("cartSubtotal");
-localStorage.removeItem("cartItemCount");
-localStorage.removeItem("cartTotal");
-localStorage.removeItem("orderItems");     // selected items
+    localStorage.removeItem("cartItems");
+    localStorage.removeItem("cartSubtotal");
+    localStorage.removeItem("cartItemCount");
+    localStorage.removeItem("cartTotal");
+    localStorage.removeItem("orderItems");
 
     window.location.href = "HomePage.html";
   });
+
+
+const profileBtn = document.getElementById("profileBtn");
+
+profileBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // CHECK ALL POSSIBLE LOGIN KEYS
+    const isLogged =
+        localStorage.getItem("isLoggedIn") === "true" ||
+        localStorage.getItem("loggedIn") === "true" ||
+        localStorage.getItem("userLogged") === "true" ||
+        localStorage.getItem("loginStatus") === "true" ||
+        localStorage.getItem("currentUser") !== null; // kapag may naka-save na user
+
+    if (isLogged) {
+        window.location.href = "profile.html";
+    } else {
+        window.location.href = "LoginPage.html";
+    }
+});
+
 });

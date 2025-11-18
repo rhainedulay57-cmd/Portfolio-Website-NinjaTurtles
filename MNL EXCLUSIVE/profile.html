@@ -177,17 +177,26 @@
     </footer>
 
 <script>
+
+// ===========================
+// CHECK LOGIN STATUS
+// ===========================
+if (!localStorage.getItem("isLoggedIn")) {
+    window.location.href = "LoginPage.html";
+}
+
 const btn = document.querySelector('.voucher-toggle');
 const content = document.querySelector('.voucher-content');
 
 btn.addEventListener('click', () => {
     content.style.display = content.style.display === "block" ? "none" : "block";
 
-// Change arrow direction
+    // Change arrow direction
     btn.textContent = content.style.display === "block" 
         ? "Voucher Code ▲" 
         : "Voucher Code ▼";
 });
+
 /* ------------------------------
    LEFT SIDEBAR NAVIGATION
 --------------------------------*/
@@ -216,15 +225,48 @@ menuLinks.forEach((link, index) => {
         showSection(index);
     });
 });
+
 /* ========== LOGOUT BUTTON ========== */
 document.getElementById("logoutBtn").addEventListener("click", function (event) {
     event.preventDefault();
     const confirmLogout = confirm("Are you sure you want to logout?");
     if (confirmLogout) {
-      alert("Logged out successfully!");
-      window.location.href = "HomePage.html";
+
+        // CLEAR ALL LOGIN DATA
+        localStorage.clear();
+
+        alert("Logged out successfully!");
+        window.location.href = "LoginPage.html";
+    }
+    // LOAD CUSTOMER ORDERS
+let orders = JSON.parse(localStorage.getItem("orders")) || [];
+
+const toShipSec = document.querySelector("#toship-section .order-table");
+const toReceiveSec = document.querySelector("#toreceive-section .order-table");
+const profileOrders = document.querySelector("#profile-section .order-table");
+
+// DISPLAY ORDERS
+orders.forEach(order => {
+    const row = `
+        <tr>
+            <td>${order.item}</td>
+            <td>${order.date}</td>
+            <td><span class="status">${order.status}</span></td>
+            <td>₱${order.total}</td>
+        </tr>
+    `;
+
+    profileOrders.innerHTML += row;
+
+    if (order.status === "Approved") {
+        toShipSec.innerHTML += row;
+    }
+    else if (order.status === "Out for Delivery") {
+        toReceiveSec.innerHTML += row;
     }
 });
+});
 </script>
+
 </body>
 </html>

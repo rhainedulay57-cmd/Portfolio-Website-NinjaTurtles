@@ -22,3 +22,13 @@ const faqs = document.querySelectorAll(".faq");
                 }
             });
         });
+        document.getElementById("profileBtn").addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Check kung may account na naka-login
+    if (localStorage.getItem("isLoggedIn") === "true") {
+        window.location.href = "Profile.html"; 
+    } else {
+        window.location.href = "LoginPage.html";
+    }
+});
