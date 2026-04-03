@@ -27,7 +27,7 @@ document.getElementById("logoutBtn").addEventListener("click", function (event) 
     const confirmLogout = confirm("Are you sure you want to logout?");
     if (confirmLogout) {
       alert("Logged out successfully!");
-      window.location.href = "LoginPage.html";
+      window.location.href = "./LoginPage.html";
     }
 });
 

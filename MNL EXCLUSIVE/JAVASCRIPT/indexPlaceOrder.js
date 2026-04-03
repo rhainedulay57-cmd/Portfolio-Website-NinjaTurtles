@@ -81,6 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("shippingInfo", JSON.stringify(shippingInfo));
 
     alert("Proceeding to payment...");
-    window.location.href = "indexPay.html";
+    window.location.href = "./indexPay.html";
   });
 });

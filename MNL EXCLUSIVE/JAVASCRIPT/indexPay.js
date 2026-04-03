@@ -43,12 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("orderTotal", total);
 
         alert("Payment confirmed via " + method.toUpperCase() + " ✅");
-        window.location.href = "indexOrderComplete.html";
+        window.location.href = "./indexOrderComplete.html";
     });
 
     // --- BACK ---
     backBtn.addEventListener("click", () => {
-        window.location.href = "indexPlaceOrder.html";
+        window.location.href = "./indexPlaceOrder.html";
     });
 
     // --- FILE UPLOAD NAME ---

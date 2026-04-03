@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cartItemsContainer.innerHTML = '';
 
         if (storedCartItems.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty. <a href="HomePage.html#new">Start shopping!</a></p>';
+            cartItemsContainer.innerHTML = '<p class="empty-cart-message">Your cart is empty. <a href="./HomePage.html#new">Start shopping!</a></p>';
             if (checkoutBtn) checkoutBtn.setAttribute('disabled', 'disabled');
             if (applyVoucherBtn) applyVoucherBtn.setAttribute('disabled', 'disabled');
             discount = 0;
@@ -244,16 +244,16 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("cartItemCount", itemCountNum);
             localStorage.setItem("cartTotal", totalNum.toFixed(2));
 
-            window.location.href = "indexPlaceOrder.html";
+            window.location.href = "./indexPlaceOrder.html";
         });
         document.getElementById("profileBtn").addEventListener("click", function (e) {
     e.preventDefault();
 
     // Check kung may account na naka-login
     if (localStorage.getItem("isLoggedIn") === "true") {
-        window.location.href = "Profile.html"; 
+        window.location.href = "./Profile.html"; 
     } else {
-        window.location.href = "LoginPage.html";
+        window.location.href = "./LoginPage.html";
     }
 });
     }

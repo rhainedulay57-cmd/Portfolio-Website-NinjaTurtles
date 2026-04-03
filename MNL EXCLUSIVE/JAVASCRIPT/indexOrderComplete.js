@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("cartTotal");
     localStorage.removeItem("orderItems");
 
-    window.location.href = "HomePage.html";
+    window.location.href = "./HomePage.html";
   });
 
 
@@ -70,9 +70,9 @@ profileBtn.addEventListener("click", (e) => {
         localStorage.getItem("currentUser") !== null; // kapag may naka-save na user
 
     if (isLogged) {
-        window.location.href = "profile.html";
+        window.location.href = "./profile.html";
     } else {
-        window.location.href = "LoginPage.html";
+        window.location.href = "./LoginPage.html";
     }
 });
 

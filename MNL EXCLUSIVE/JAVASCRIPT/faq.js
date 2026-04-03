@@ -27,8 +27,8 @@ const faqs = document.querySelectorAll(".faq");
 
     // Check kung may account na naka-login
     if (localStorage.getItem("isLoggedIn") === "true") {
-        window.location.href = "Profile.html"; 
+        window.location.href = "./Profile.html"; 
     } else {
-        window.location.href = "LoginPage.html";
+        window.location.href = "./LoginPage.html";
     }
 });
