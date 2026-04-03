@@ -382,7 +382,7 @@ ul {
   font-family: "Poppins", sans-serif;
   flex-wrap: wrap;
   position: relative;
-  top: 0px;
+  top: 5rem;
 }
 .footer-section {
   width: 30%;
