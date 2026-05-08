@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <title>Reports - MNL Exclusive</title>
+    <style>
+        .report-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .report-filters select, .report-filters input[type="date"] {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-light);
+            border-radius: 0.5rem;
+            background: var(--color-white);
+            color: var(--color-dark);
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .report-filters button {
+            padding: 0.5rem 1.2rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .report-filters button:hover { opacity: 0.85; }
+
+        .report-section {
+            background: var(--color-white);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+        .report-section h2 {
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .report-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .report-section th, .report-section td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-light);
+            font-size: 0.88rem;
+        }
+        .report-section th { color: var(--color-dark-variant); font-weight: 600; }
+
+        .status-badge {
+            padding: 0.25rem 0.7rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-success { background: #d4edda; color: #155724; }
+        .badge-warning { background: #fff3cd; color: #856404; }
+        .badge-danger  { background: #f8d7da; color: #721c24; }
+
+        .summary-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .summary-box {
+            background: var(--color-white);
+            padding: 1.2rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--box-shadow);
+        }
+        .summary-box p { color: var(--color-dark-variant); font-size: 0.85rem; margin-bottom: 0.3rem; }
+        .summary-box h2 { color: var(--color-dark); font-size: 1.5rem; }
+
+        .export-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-success);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            float: right;
+            margin-bottom: 1rem;
+        }
+        .export-btn:hover { opacity: 0.85; }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ASIDE -->
+        <aside>
+            <div class="top">
+                <div class="logoname">
+                    <h2>MNL <span class="exclusive">EXCLUSIVE</span></h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="./AdminDashboard.html">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="./Approval.html">
+                    <span class="material-symbols-outlined">person_outline</span>
+                    <h3>Orders</h3>
+                </a>
+                <a href="./Analytics.html">
+                    <span class="material-symbols-outlined">Insights</span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="./adminmessage.html">
+                    <span class="material-symbols-outlined">mail_outline</span>
+                    <h3>Messages</h3>
+                </a>
+                <a href="./Products.html">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h3>Products</h3>
+                </a>
+                <a href="./Reports.html" class="active">
+                    <span class="material-symbols-outlined">report_gmailerrorred</span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="./Settings.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="./AddProduct.html">
+                    <span class="material-symbols-outlined">add</span>
+                    <h3>Add Product</h3>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main>
+            <h1>Reports</h1>
+            <div class="date"><input type="date"></div>
+
+            <!-- Filters -->
+            <div class="report-filters">
+                <select>
+                    <option>All Categories</option>
+                    <option>Sales</option>
+                    <option>Orders</option>
+                    <option>Customers</option>
+                </select>
+                <input type="date" placeholder="From">
+                <input type="date" placeholder="To">
+                <button onclick="alert('Filtering...')">Filter</button>
+            </div>
+
+            <!-- Summary Row -->
+            <div class="summary-row">
+                <div class="summary-box">
+                    <p>Total Revenue</p>
+                    <h2>₱149,850</h2>
+                </div>
+                <div class="summary-box">
+                    <p>Orders This Month</p>
+                    <h2>58</h2>
+                </div>
+                <div class="summary-box">
+                    <p>Refunds / Returns</p>
+                    <h2>4</h2>
+                </div>
+            </div>
+
+            <!-- Sales Report Table -->
+            <div class="report-section">
+                <button class="export-btn" onclick="exportCSV()">
+                    <span class="material-symbols-outlined" style="font-size:1rem">download</span>
+                    Export CSV
+                </button>
+                <h2>Sales Report</h2>
+                <table id="reportTable">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#0001</td>
+                            <td>Juan Dela Cruz</td>
+                            <td>Mesh Jersey 08</td>
+                            <td>1</td>
+                            <td>₱499.00</td>
+                            <td>Nov 18, 2025</td>
+                            <td><span class="status-badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#0002</td>
+                            <td>Maria Santos</td>
+                            <td>Let Em Know</td>
+                            <td>2</td>
+                            <td>₱702.24</td>
+                            <td>Nov 17, 2025</td>
+                            <td><span class="status-badge badge-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>#0003</td>
+                            <td>Mark Reyes</td>
+                            <td>Baggy Sweat Pants</td>
+                            <td>1</td>
+                            <td>₱699.00</td>
+                            <td>Nov 16, 2025</td>
+                            <td><span class="status-badge badge-success">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>#0004</td>
+                            <td>Jose Arevalo</td>
+                            <td>Manila Interlude</td>
+                            <td>1</td>
+                            <td>₱499.00</td>
+                            <td>Nov 15, 2025</td>
+                            <td><span class="status-badge badge-danger">Refunded</span></td>
+                        </tr>
+                        <tr>
+                            <td>#0005</td>
+                            <td>Ana Garcia</td>
+                            <td>Mesh Jersey 08</td>
+                            <td>3</td>
+                            <td>₱1,497.00</td>
+                            <td>Nov 14, 2025</td>
+                            <td><span class="status-badge badge-success">Completed</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="top">
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p><b>ADMIN NAME</b></p>
+                        <p>Admin</p>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="../IMAGES/prufile.webp" alt="profile-photo">
+                    </div>
+                </div>
+            </div>
+            <div class="recent_updates">
+                <h2>Recent Update</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo"><img src="../IMAGES/buyer1.jpg" alt=""></div>
+                        <div class="message"><p><b>Buyer</b> Received his order</p></div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo"><img src="../IMAGES/buyer2.png" alt=""></div>
+                        <div class="message"><p><b>Buyer</b> Received his order</p></div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo"><img src="../IMAGES/buyer3.jpg" alt=""></div>
+                        <div class="message"><p><b>Buyer</b> Received his order</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JAVASCRIPT/admin.js"></script>
+    <script>
+        function exportCSV() {
+            const rows = [["Order ID","Customer","Product","Qty","Amount","Date","Status"]];
+            document.querySelectorAll('#reportTable tbody tr').forEach(tr => {
+                const cells = [...tr.querySelectorAll('td')].map((td, i) => i === 6 ? td.querySelector('span').textContent : td.textContent);
+                rows.push(cells);
+            });
+            const csv = rows.map(r => r.join(',')).join('\n');
+            const a = document.createElement('a');
+            a.href = 'data:text/csv,' + encodeURIComponent(csv);
+            a.download = 'mnl_report.csv';
+            a.click();
+        }
+    </script>
+</body>
+</html>

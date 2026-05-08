@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/admin.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <title>Analytics - MNL Exclusive</title>
+    <style>
+        .analytics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .analytics-card {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+        }
+        .analytics-card h3 { font-size: 0.9rem; color: var(--color-dark-variant); margin-bottom: 0.5rem; }
+        .analytics-card h1 { font-size: 1.8rem; color: var(--color-dark); }
+        .analytics-card small { color: var(--color-success); font-size: 0.8rem; }
+
+        .chart-section {
+            background: var(--color-white);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+        .chart-section h2 { margin-bottom: 1rem; color: var(--color-dark); }
+
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            height: 180px;
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--color-light);
+        }
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            gap: 0.4rem;
+        }
+        .bar {
+            width: 100%;
+            background: var(--color-primary);
+            border-radius: 6px 6px 0 0;
+            transition: opacity 0.2s;
+            cursor: pointer;
+        }
+        .bar:hover { opacity: 0.75; }
+        .bar-label { font-size: 0.75rem; color: var(--color-dark-variant); }
+        .bar-value { font-size: 0.7rem; color: var(--color-dark); font-weight: 600; }
+
+        .top-products table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .top-products th, .top-products td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-light);
+            font-size: 0.9rem;
+        }
+        .top-products th { color: var(--color-dark-variant); font-weight: 600; }
+        .rank-badge {
+            display: inline-block;
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: white;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .progress-bar-wrap { background: var(--color-light); border-radius: 10px; height: 8px; width: 120px; }
+        .progress-bar-fill { background: var(--color-primary); height: 8px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ASIDE -->
+        <aside>
+            <div class="top">
+                <div class="logoname">
+                    <h2>MNL <span class="exclusive">EXCLUSIVE</span></h2>
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+            <div class="sidebar">
+                <a href="./AdminDashboard.html">
+                    <span class="material-symbols-outlined">grid_view</span>
+                    <h3>Dashboard</h3>
+                </a>
+                <a href="./Approval.html">
+                    <span class="material-symbols-outlined">person_outline</span>
+                    <h3>Orders</h3>
+                </a>
+                <a href="./Analytics.html" class="active">
+                    <span class="material-symbols-outlined">Insights</span>
+                    <h3>Analytics</h3>
+                </a>
+                <a href="./adminmessage.html">
+                    <span class="material-symbols-outlined">mail_outline</span>
+                    <h3>Messages</h3>
+                </a>
+                <a href="./Products.html">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <h3>Products</h3>
+                </a>
+                <a href="./Reports.html">
+                    <span class="material-symbols-outlined">report_gmailerrorred</span>
+                    <h3>Reports</h3>
+                </a>
+                <a href="./Settings.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Settings</h3>
+                </a>
+                <a href="./AddProduct.html">
+                    <span class="material-symbols-outlined">add</span>
+                    <h3>Add Product</h3>
+                </a>
+                <a href="#" id="logoutBtn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <main>
+            <h1>Analytics</h1>
+            <div class="date"><input type="date"></div>
+
+            <!-- Summary Cards -->
+            <div class="analytics-cards">
+                <div class="analytics-card">
+                    <h3>Total Revenue</h3>
+                    <h1>₱149,850</h1>
+                    <small>▲ 12% this month</small>
+                </div>
+                <div class="analytics-card">
+                    <h3>Total Orders</h3>
+                    <h1>342</h1>
+                    <small>▲ 8% this month</small>
+                </div>
+                <div class="analytics-card">
+                    <h3>New Customers</h3>
+                    <h1>87</h1>
+                    <small>▲ 5% this month</small>
+                </div>
+                <div class="analytics-card">
+                    <h3>Avg. Order Value</h3>
+                    <h1>₱438</h1>
+                    <small>▲ 3% this month</small>
+                </div>
+            </div>
+
+            <!-- Bar Chart: Monthly Sales -->
+            <div class="chart-section">
+                <h2>Monthly Sales (₱)</h2>
+                <div class="bar-chart">
+                    <div class="bar-group">
+                        <span class="bar-value">₱18k</span>
+                        <div class="bar" style="height:90px;" title="Jan"></div>
+                        <span class="bar-label">Jan</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">₱22k</span>
+                        <div class="bar" style="height:110px;" title="Feb"></div>
+                        <span class="bar-label">Feb</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">₱15k</span>
+                        <div class="bar" style="height:75px;" title="Mar"></div>
+                        <span class="bar-label">Mar</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">₱30k</span>
+                        <div class="bar" style="height:150px;" title="Apr"></div>
+                        <span class="bar-label">Apr</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">₱25k</span>
+                        <div class="bar" style="height:125px;" title="May"></div>
+                        <span class="bar-label">May</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">₱28k</span>
+                        <div class="bar" style="height:140px;" title="Jun"></div>
+                        <span class="bar-label">Jun</span>
+                    </div>
+                    <div class="bar-group">
+                        <span class="bar-value">₱11k</span>
+                        <div class="bar" style="height:55px;" title="Jul"></div>
+                        <span class="bar-label">Jul</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Products -->
+            <div class="chart-section top-products">
+                <h2>Top Selling Products</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Product</th>
+                            <th>Units Sold</th>
+                            <th>Revenue</th>
+                            <th>Sales Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="rank-badge">1</span></td>
+                            <td>Mesh Jersey 08</td>
+                            <td>98</td>
+                            <td>₱48,902</td>
+                            <td>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar-fill" style="width:90%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">2</span></td>
+                            <td>Manila Interlude</td>
+                            <td>74</td>
+                            <td>₱36,926</td>
+                            <td>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar-fill" style="width:68%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">3</span></td>
+                            <td>Baggy Sweat Pants</td>
+                            <td>61</td>
+                            <td>₱42,639</td>
+                            <td>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar-fill" style="width:56%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">4</span></td>
+                            <td>Let Em Know</td>
+                            <td>52</td>
+                            <td>₱18,252</td>
+                            <td>
+                                <div class="progress-bar-wrap">
+                                    <div class="progress-bar-fill" style="width:42%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="top">
+                <button id="menu_bar">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-symbols-outlined active">light_mode</span>
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p><b>ADMIN NAME</b></p>
+                        <p>Admin</p>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="IMAGES/prufile.webp" alt="profile-photo">
+                    </div>
+                </div>
+            </div>
+            <div class="recent_updates">
+                <h2>Recent Update</h2>
+                <div class="updates">
+                    <div class="update">
+                        <div class="profile-photo"><img src="IMAGES/buyer1.jpg" alt=""></div>
+                        <div class="message"><p><b>Buyer</b> Received his order</p></div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo"><img src="IMAGES/buyer2.png" alt=""></div>
+                        <div class="message"><p><b>Buyer</b> Received his order</p></div>
+                    </div>
+                    <div class="update">
+                        <div class="profile-photo"><img src="IMAGES/buyer3.jpg" alt=""></div>
+                        <div class="message"><p><b>Buyer</b> Received his order</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="JAVASCRIPT/admin.js"></script>
+</body>
+</html>
